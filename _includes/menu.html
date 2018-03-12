@@ -1,0 +1,30 @@
+<div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    {% for item in site.data.settings.menu %}
+      <a href="{{ item.path }}/{{ item.url }}">{{ item.name }}</a>
+    {% endfor %}
+  </nav>
+  <nav class="social-icons">
+    {% for item in site.data.settings.social %}
+      <a href="{{ item.link }}" target="_blank"><i class="fa fa-{{ item.icon }}" aria-hidden="true"></i></a>
+    {% endfor %}
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>

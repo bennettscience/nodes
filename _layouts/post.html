@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+<h1>
+  {{ page.title }}
+</h1>
+
+{% if page.image %}
+  <div class="bgimg" style="background-image:url('{{page.image}}'); background-size:cover; background-repeat:no-repeat; background-position: center center"></div>
+{% endif %}
+
+{{ content }}
+
+
+<span class="post-date">
+  Written on
+  {% assign d = page.date | date: "%-d"  %}
+  {{ page.date | date: "%B" }}
+  {% case d %}
+    {% when '1' or '21' or '31' %}{{ d }}st
+    {% when '2' or '22' %}{{ d }}nd
+    {% when '3' or '23' %}{{ d }}rd
+    {% else %}{{ d }}th{% endcase %},
+  {{ page.date | date: "%Y" }}
+  by
+  {% if page.author %}
+    {{ page.author }}
+  {% else %}
+    {{ site.data.authors.primary.name }}
+  {% endif %}
+</span>
+<span class="post-cat">
+  Categorized in: 
+  {% for category in page.categories %}
+  <a href="/categories/#{{category|slugize}}">{{category}}</a>
+ {% unless forloop.last %}&nbsp;{% endunless %}
+ {% endfor %}
+</span>
+<span class="post-tags">
+  Tagged: {{ page.tags | join: ', ' }}
+</span>
+
+<hr />
+
+{% include social-sharing.html %}
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>

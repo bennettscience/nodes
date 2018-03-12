@@ -1,0 +1,36 @@
+<head>
+
+  <title>
+    {% if page.title == "Home" %}
+      {{ site.data.settings.title }} | {{ site.data.settings.tagline }}
+    {% else %}
+      {{ page.title }} | {{ site.data.settings.title }}
+    {% endif %}
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- {% feed_meta %} -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="{{ site.data.settings.title }} | {{ site.data.settings.tagline }}"/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  {% include google-analytics.html %}
+
+
+</head>
