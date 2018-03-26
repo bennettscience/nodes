@@ -143,7 +143,7 @@
   <li>Set up an empty repository using <code class="highlighter-rouge">git init</code>.</li>
   <li>Assign a remote repo via url using <code class="highlighter-rouge">git remote add &lt;name&gt; &lt;url&gt;</code>. So, mine is called <code class="highlighter-rouge">nodes-site</code> and maps to <code class="highlighter-rouge">https://github.com/bennettscience/nodes.git</code>.</li>
   <li>Fetch the <em>entire</em> project with <code class="highlighter-rouge">git fetch nodes-site</code>. This finds and maps the entire project to git but doesn’t actually add any files yet.</li>
-  <li>Check out a single folder with <code class="highlighter-rouge">git checkout nodes-site/master _site</code>. This creates a read-only directory!</li>
+  <li>Check out a single folder with <code class="highlighter-rouge">git checkout nodes-site/master -- _site</code>. This creates a read-only directory!</li>
 </ol>
 
 <p>I don’t need to write any files on the server…I do all of that on the computer. This step just grabs what’s been published to the Github repo and displays it as a live page on <a href="https://blog.ohheybrian.com">blog.ohheybrian.com</a>.</p>

@@ -29,7 +29,7 @@ It turns out that you can pull single directories from a GitHub repo online. The
 1. Set up an empty repository using `git init`.
 2. Assign a remote repo via url using `git remote add <name> <url>`. So, mine is called `nodes-site` and maps to `https://github.com/bennettscience/nodes.git`.
 3. Fetch the _entire_ project with `git fetch nodes-site`. This finds and maps the entire project to git but doesn't actually add any files yet.
-4. Check out a single folder with `git checkout nodes-site/master _site`. This creates a read-only directory!
+4. Check out a single folder with `git checkout nodes-site/master -- _site`. This creates a read-only directory!
 
 I don't need to write any files on the server...I do all of that on the computer. This step just grabs what's been published to the Github repo and displays it as a live page on [blog.ohheybrian.com](https://blog.ohheybrian.com).
 
