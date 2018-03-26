@@ -4,6 +4,7 @@ custom_css: podcast
 image: https://farm5.static.flickr.com/4050/4251803169_5743b59920_z.jpg
 title: "Reviving Old Podcast Files"
 date: "2018-03-12 14:24:05 -0400"
+published: false
 ---
 
 In 2013 and 2014, I hosted a podcast for TechSmith with the EdReach Network. EdReach, from what I can tell, has stopped serving media and has focused solely on contributed writing. The site is somewhat of a mishmash, where I'm able to dig around and find old show landing pages, but none of the media is there. The Wayback Machine had several hundred snapshots between 2012 and 2017, including some in 2014 which had the entire show lexicon listed. But, since none of the media are currently available (404 errors, probably because they deleted all of the old material), none of the audio is available.
