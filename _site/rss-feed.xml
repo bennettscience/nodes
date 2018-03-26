@@ -7,6 +7,32 @@
 		<atom:link href="rss-feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Reclaiming Jekyll</title>
+				
+				
+					<description>&lt;p&gt;In December, &lt;a href=&quot;https://blog.ohheybrian.com/2018/01/move-wordpress-to-jekyll-complete-guide.html&quot;&gt;I moved off of WordPress to Jekyll&lt;/a&gt;. This is easy to do with GitHub Pages, but I wanted to self-host because keeping a SSL certificate was important to me. I followed &lt;a href=&quot;https://blog.timowens.io/running-a-jekyll-site-on-reclaim-hosting/&quot;&gt;Tim Owen’s sample&lt;/a&gt; had everything up and working well.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Mon, 26 Mar 2018 10:28:35 -0400</pubDate>
+				<link>/2018/03/reclaiming-jekyll.html</link>
+				<guid isPermaLink="true">/2018/03/reclaiming-jekyll.html</guid>
+			</item>
+		
+			<item>
+				<title>Dynamic Data Validation with Apps Script</title>
+				
+				
+					<description>&lt;p&gt;My coworker, Kat, needed to set up meetings with our 13 elementary schools. Appointment slots would have been a lot of clicking back and forth on calendar events plus her dates were variable and subject to change. She set up a spreadsheet with each school on a row. The challenge was to set up data validation rules that would automatically update after a school made a selection.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Fri, 23 Mar 2018 09:00:00 -0400</pubDate>
+				<link>/2018/03/dynamic-data-validation-with-apps-script.html</link>
+				<guid isPermaLink="true">/2018/03/dynamic-data-validation-with-apps-script.html</guid>
+			</item>
+		
+			<item>
 				<title>Goolge Apps Script Knowledgebase Suite</title>
 				
 				
@@ -108,32 +134,6 @@
 				<pubDate>Mon, 01 Jan 2018 00:00:00 -0500</pubDate>
 				<link>/2018/01/move-wordpress-to-jekyll-complete-guide.html</link>
 				<guid isPermaLink="true">/2018/01/move-wordpress-to-jekyll-complete-guide.html</guid>
-			</item>
-		
-			<item>
-				<title>New Tab Flickr Background Extension</title>
-				
-				
-					<description>&lt;p&gt;I’m part of digital-only secret Santa exchange. It’s a cool idea…you’re assigned someone you may (or may not know) and tasked with coming up with a free (or very cheap, ~$5) digital gift. Some ideas were things like creating customized Spotify playlists or blog lists, creative portraits of the person from images you find online, to recipe or book suggestions.&lt;/p&gt;
-
-</description>
-				
-				<pubDate>Tue, 19 Dec 2017 07:09:51 -0500</pubDate>
-				<link>/2017/12/new-tab-flickr-background-extension/</link>
-				<guid isPermaLink="true">/2017/12/new-tab-flickr-background-extension/</guid>
-			</item>
-		
-			<item>
-				<title>Slide Tweeter Update 4</title>
-				
-				
-					<description>&lt;p&gt;I thought I was ready for some beta testing of the Slide Tweeter AddOn. Unfortunately, I’ve run into a snag with authenticating some of the code.&lt;/p&gt;
-
-</description>
-				
-				<pubDate>Sat, 09 Dec 2017 09:19:57 -0500</pubDate>
-				<link>/2017/12/slide-tweeter-update-4/</link>
-				<guid isPermaLink="true">/2017/12/slide-tweeter-update-4/</guid>
 			</item>
 		
 	</channel>

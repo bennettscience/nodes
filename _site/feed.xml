@@ -1,4 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/nodes/_site/feed.xml" rel="self" type="application/atom+xml" /><link href="/nodes/_site/" rel="alternate" type="text/html" /><updated>2018-03-23T08:05:39-04:00</updated><id>/nodes/_site/</id><title type="html">nodes</title><subtitle></subtitle><author><name>Brian Bennett</name></author><entry><title type="html">Goolge Apps Script Knowledgebase Suite</title><link href="/nodes/_site/2018/03/goolge-apps-script-knowledgebase-suite.html" rel="alternate" type="text/html" title="Goolge Apps Script Knowledgebase Suite" /><published>2018-03-20T13:31:58-04:00</published><updated>2018-03-20T13:31:58-04:00</updated><id>/nodes/_site/2018/03/goolge-apps-script-knowledgebase-suite</id><content type="html" xml:base="/nodes/_site/2018/03/goolge-apps-script-knowledgebase-suite.html">&lt;p&gt;This is another entry into the “fun, but probably not feasible” folder.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/nodes/_site/feed.xml" rel="self" type="application/atom+xml" /><link href="/nodes/_site/" rel="alternate" type="text/html" /><updated>2018-03-26T10:59:54-04:00</updated><id>/nodes/_site/</id><title type="html">nodes</title><subtitle></subtitle><author><name>Brian Bennett</name></author><entry><title type="html">Reclaiming Jekyll</title><link href="/nodes/_site/2018/03/reclaiming-jekyll.html" rel="alternate" type="text/html" title="Reclaiming Jekyll" /><published>2018-03-26T10:28:35-04:00</published><updated>2018-03-26T10:28:35-04:00</updated><id>/nodes/_site/2018/03/reclaiming-jekyll</id><content type="html" xml:base="/nodes/_site/2018/03/reclaiming-jekyll.html">&lt;p&gt;In December, &lt;a href=&quot;https://blog.ohheybrian.com/2018/01/move-wordpress-to-jekyll-complete-guide.html&quot;&gt;I moved off of WordPress to Jekyll&lt;/a&gt;. This is easy to do with GitHub Pages, but I wanted to self-host because keeping a SSL certificate was important to me. I followed &lt;a href=&quot;https://blog.timowens.io/running-a-jekyll-site-on-reclaim-hosting/&quot;&gt;Tim Owen’s sample&lt;/a&gt; had everything up and working well.&lt;/p&gt;
+
+&lt;p&gt;I faced two specific challenges, though.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;FTP and SSH uploads were blocked in several places where I normally work. That meant I needed to remember which files needed to be uploaded via cPanel every time I wanted to publish a post. I would often forget an image or have a broken link, which meant regenerating the &lt;em&gt;entire&lt;/em&gt; site.&lt;/li&gt;
+  &lt;li&gt;Because SSH was blocked, I had to use a cron job to publish the post. I would set one up to run every 5 minutes while I was working to make sure the changes were correct. Then, I would delete the cron job.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The bigger issue was that building on the server duplicated the site files. So, I’d have a folder of all of my posts and assets (images, styles, etc) that would get copied into the live site. Instead of shrinking my server footprint, it was doubled. No good.&lt;/p&gt;
+
+&lt;p&gt;My next idea was to use &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt;, which is preinstalled on Reclaim shared hosting (which is &lt;em&gt;awesome&lt;/em&gt;), to manage all of my files. But, I ran into the SSH problem again (HTTPS doesn’t work out of the box with git and setting it up is a headache). I also had problems tying the folder to the Reclaim location for some reason. So, that idea was out.&lt;/p&gt;
+
+&lt;p&gt;I continued to think about the problem and I finally landed on it: I wanted to keep &lt;em&gt;all&lt;/em&gt; of my files on Reclaim when I really only needed the &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt; directory. I can build it on my computer and then publish only the live components.&lt;/p&gt;
+
+&lt;p&gt;This introduced &lt;em&gt;another&lt;/em&gt; problem: it’s more complicated than just uploading the new post. The &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt; directory is changed and paginated with each build, so all of the relative links have the potential to change. How would I limit my upload to the site directory without needed to build on the server?&lt;/p&gt;
+
+&lt;p&gt;It turns out that you can pull single directories from a GitHub repo online. The key is only checking out the directory you want. Instead of using &lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt; to fetch and merge everything, you break it down into several steps.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Set up an empty repository using &lt;code class=&quot;highlighter-rouge&quot;&gt;git init&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Assign a remote repo via url using &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add &amp;lt;name&amp;gt; &amp;lt;url&amp;gt;&lt;/code&gt;. So, mine is called &lt;code class=&quot;highlighter-rouge&quot;&gt;nodes-site&lt;/code&gt; and maps to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://github.com/bennettscience/nodes.git&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Fetch the &lt;em&gt;entire&lt;/em&gt; project with &lt;code class=&quot;highlighter-rouge&quot;&gt;git fetch nodes-site&lt;/code&gt;. This finds and maps the entire project to git but doesn’t actually add any files yet.&lt;/li&gt;
+  &lt;li&gt;Check out a single folder with &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout nodes-site/master _site&lt;/code&gt;. This creates a read-only directory!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I don’t need to write any files on the server…I do all of that on the computer. This step just grabs what’s been published to the Github repo and displays it as a live page on &lt;a href=&quot;https://blog.ohheybrian.com&quot;&gt;blog.ohheybrian.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here’s my new process:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Write and build the site on the computer. It runs faster, no need for the Internet.&lt;/li&gt;
+  &lt;li&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; to track all of the changes and push it up to GitHub. All of the files are public already through the blog, so I don’t care that it’s available publicly there, too. In fact, it serves as a nice backup in case I &lt;em&gt;really&lt;/em&gt; bork something up.&lt;/li&gt;
+  &lt;li&gt;Write the steps above as a cron job to pull the &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt; directory in a couple times per day. If nothing changes, no new files are copied over. If there’s been a new post, that’s reflected in Git and the entire directory restructures with the changes.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;My original folder (with &lt;em&gt;everything&lt;/em&gt;) came in around 300MB. The new folder, with only the published material, is about 180MB. So, I saved 50% of my disk space by publishing only the live pages.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://stackoverflow.com/questions/2425059/how-to-pull-specific-directory-with-git&quot;&gt;This StackOverflow post&lt;/a&gt; got me moving in the right direction.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Featured image: &lt;a href=&quot;https://flickr.com/photos/kallao/2853908937&quot; title=&quot;Allen-Bradley Clock Tower&quot;&gt;Allen-Bradley Clock Tower&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/kallao&quot;&gt;kallao&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-nd/2.0/&quot;&gt;Creative Commons (BY-NC-ND) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="self-host" /><category term="jekyll" /><category term="publishing" /><category term="git" /><category term="how-to" /><summary type="html">In December, I moved off of WordPress to Jekyll. This is easy to do with GitHub Pages, but I wanted to self-host because keeping a SSL certificate was important to me. I followed Tim Owen’s sample had everything up and working well.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c2.staticflickr.com/4/3091/2853908937_67e08ba9de_z.jpg?zz=1" /></entry><entry><title type="html">Dynamic Data Validation with Apps Script</title><link href="/nodes/_site/2018/03/dynamic-data-validation-with-apps-script.html" rel="alternate" type="text/html" title="Dynamic Data Validation with Apps Script" /><published>2018-03-23T09:00:00-04:00</published><updated>2018-03-23T09:00:00-04:00</updated><id>/nodes/_site/2018/03/dynamic-data-validation-with-apps-script</id><content type="html" xml:base="/nodes/_site/2018/03/dynamic-data-validation-with-apps-script.html">&lt;p&gt;My coworker, Kat, needed to set up meetings with our 13 elementary schools. Appointment slots would have been a lot of clicking back and forth on calendar events plus her dates were variable and subject to change. She set up a spreadsheet with each school on a row. The challenge was to set up data validation rules that would automatically update after a school made a selection.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;cracks knuckles&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The first thing to do was to list out all the possible dates. Updating a spreadsheet is easier than changing a validation object in Apps Script. I can also loop the sheet and make structural adjustments on the fly.&lt;/p&gt;
+
+&lt;p&gt;Once that list was done, we wrote a function to set validation on the sheet using the date.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/bennettscience/0530546722a48b1473329785e2460b95.js?file=setValidation.gs&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now that validation is set, we needed to listen for changes to the spreadsheet. The &lt;code class=&quot;highlighter-rouge&quot;&gt;onOpen&lt;/code&gt; function has an event object which holds information about where and how the sheet was edited. This let us limit the function to changes in columns two or three only. If a cell was edited (ie the validation dropdown was changed by the user) the function gathers event data and passes it along to the workhorse.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/bennettscience/0530546722a48b1473329785e2460b95.js?file=onEdit.gs&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Now we can update the validation range. Loop through the entire range of dates &lt;em&gt;backwards&lt;/em&gt;. Once a matching row is found, delete the row. Looping backwards prevents your index from changing. We also &lt;em&gt;remove&lt;/em&gt; validation from the edited cell at this point so it doesn’t show an error for having a value outside the validation list.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/bennettscience/0530546722a48b1473329785e2460b95.js?file=updateValidation.gs&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Because validation is pulled from a range, deleting the row (and the value) removes it as an option in &lt;em&gt;all&lt;/em&gt; of the other cells! Once the sheet is finished and everyone has a date, you could even add a short loop to push dates to your Google calendar as all day events.&lt;/p&gt;
+
+&lt;p&gt;Here’s the &lt;a href=&quot;https://gist.github.com/bennettscience/0530546722a48b1473329785e2460b95&quot;&gt;full script&lt;/a&gt; if you want to add it to your sheet.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Featuredimage is &lt;a href=&quot;https://flickr.com/photos/jimchoate/30330644255&quot; title=&quot;Array of Rivets&quot;&gt;Array of Rivets&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/jimchoate&quot;&gt;jim.choate59&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-nd/2.0/&quot;&gt;Creative Commons (BY-NC-ND) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="productivity" /><category term="google apps script" /><category term="google sheets" /><category term="programming" /><summary type="html">My coworker, Kat, needed to set up meetings with our 13 elementary schools. Appointment slots would have been a lot of clicking back and forth on calendar events plus her dates were variable and subject to change. She set up a spreadsheet with each school on a row. The challenge was to set up data validation rules that would automatically update after a school made a selection.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://farm6.static.flickr.com/5607/30330644255_8dc5dc5212_z.jpg" /></entry><entry><title type="html">Goolge Apps Script Knowledgebase Suite</title><link href="/nodes/_site/2018/03/goolge-apps-script-knowledgebase-suite.html" rel="alternate" type="text/html" title="Goolge Apps Script Knowledgebase Suite" /><published>2018-03-20T13:31:58-04:00</published><updated>2018-03-20T13:31:58-04:00</updated><id>/nodes/_site/2018/03/goolge-apps-script-knowledgebase-suite</id><content type="html" xml:base="/nodes/_site/2018/03/goolge-apps-script-knowledgebase-suite.html">&lt;p&gt;This is another entry into the “fun, but probably not feasible” folder.&lt;/p&gt;
 
 &lt;p&gt;A colleague and I have been trying to show the importance of getting a knowledgebase set up for our teachers. It’s been a back-burner issue for a long time because:&lt;/p&gt;
 
@@ -423,62 +489,4 @@ macroscopic and microscopic levels.&lt;/blockquote&gt;
 
 &lt;p&gt;–&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Featured image is &lt;a href=&quot;https://flickr.com/photos/maxschiffer/38579893751&quot; title=&quot;Find your way&quot;&gt;Find your way&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/maxschiffer&quot;&gt;maximilianschiffer&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nd/2.0/&quot;&gt;Creative Commons (BY-ND) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="Code" /><category term="wordpress" /><category term="jekyll" /><category term="blogging" /><category term="how-to" /><summary type="html">This is a long post in several parts. Jump to different sections using the links below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/5/4562/38579893751_b3b89701b7_c.jpg" /></entry><entry><title type="html">New Tab Flickr Background Extension</title><link href="/nodes/_site/2017/12/new-tab-flickr-background-extension/" rel="alternate" type="text/html" title="New Tab Flickr Background Extension" /><published>2017-12-19T07:09:51-05:00</published><updated>2017-12-19T07:09:51-05:00</updated><id>/nodes/_site/2017/12/new-tab-flickr-background-extension</id><content type="html" xml:base="/nodes/_site/2017/12/new-tab-flickr-background-extension/">&lt;p&gt;I’m part of digital-only secret Santa exchange. It’s a cool idea…you’re assigned someone you may (or may not know) and tasked with coming up with a free (or very cheap, ~$5) digital gift. Some ideas were things like creating customized Spotify playlists or blog lists, creative portraits of the person from images you find online, to recipe or book suggestions.&lt;/p&gt;
-
-&lt;p&gt;After snooping out my person, I found that they really like being outside, but they’re a programmer by day. So, I decided to throw together a little Chrome/Firefox extension which replaces their new tab page with a randomly-found picture from Flickr.&lt;/p&gt;
-
-&lt;p&gt;Originally, I hardcoded tags that would always return an image of a forest. I decided that wasn’t much fun. What if they wanted to look at a beach that day?&lt;/p&gt;
-
-&lt;p&gt;So, I tapped into Chrome and Firefox local storage. You can input some tags (comma separated) into a simple form and hey presto! The image changes. It will use those tags with each new tab load until you change the tags.&lt;/p&gt;
-
-&lt;video style=&quot;width:100%; height:auto&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot;&gt;&lt;source src=&quot;https://blog.ohheybrian.com/wp-content/uploads/2017/12/2017-12-19_12-05-25.mp4&quot; type=&quot;video/mp4&quot; /&gt;&lt;/video&gt;
-
-&lt;p&gt;I’m pulling the large image (1600px on the longest side) and every now and then an image fails to load. I don’t know of a good way to preprocess for missing image URLs yet. Plus, I did this in a two-day blitz. In good fashion, each photo is linked to the original file in Flickr at the bottom of the screen so you can go and give it a fav if you’re a Flickr user.&lt;/p&gt;
-
-&lt;p&gt;If you want to try it out you can &lt;a href=&quot;https://ohheybrian.com/media/newTab.zip&quot;&gt;download this zip holding both extension files&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;to-install&quot;&gt;To Install&lt;/h2&gt;
-
-&lt;h3 id=&quot;chrome&quot;&gt;Chrome&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;chrome:extensions&lt;/code&gt; in the address bar.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Make sure the “Developer Mode” checkbox is selected.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Click on “Load unpacked extension” and select the folder you downloaded.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Enable it and then open a new tab. You’ll need to set the tags the first time.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;firefox&quot;&gt;Firefox&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;about:addons&lt;/code&gt; in the address bar.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Click on the gear icon (top right) and select “Install Add-On From File…”&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select the &lt;code class=&quot;highlighter-rouge&quot;&gt;.xpi&lt;/code&gt; file from your download and enable it in the popup.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Open a new tab and set your keywords.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;—&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Featured image is a screenshot of the extension which is showing &lt;a href=&quot;https://flickr.com/photos/156723268@N03/25293758428 &amp;#8220;Crowded summer beach. High angle view&amp;#8221;&quot;&gt;Crowded summer beach. High angle view&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/156723268@N03&quot;&gt;slon.pics&lt;/a&gt; shared into the public domain using &lt;a href=&quot;https://creativecommons.org/publicdomain/zero/1.0/&quot;&gt;Creative Commons Public Domain Dedication (CC0)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><summary type="html">I’m part of digital-only secret Santa exchange. It’s a cool idea…you’re assigned someone you may (or may not know) and tasked with coming up with a free (or very cheap, ~$5) digital gift. Some ideas were things like creating customized Spotify playlists or blog lists, creative portraits of the person from images you find online, to recipe or book suggestions.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/nodes/_site/assets/img/wp-content/uploads/2017/12/2017-12-19_12-07-44.png" /></entry><entry><title type="html">Slide Tweeter Update 4</title><link href="/nodes/_site/2017/12/slide-tweeter-update-4/" rel="alternate" type="text/html" title="Slide Tweeter Update 4" /><published>2017-12-09T09:19:57-05:00</published><updated>2017-12-09T09:19:57-05:00</updated><id>/nodes/_site/2017/12/slide-tweeter-update-4</id><content type="html" xml:base="/nodes/_site/2017/12/slide-tweeter-update-4/">&lt;p&gt;I thought I was ready for some beta testing of the Slide Tweeter AddOn. Unfortunately, I’ve run into a snag with authenticating some of the code.&lt;/p&gt;
-
-&lt;p&gt;When you install and Addon from Google, it’s in something called &lt;code class=&quot;highlighter-rouge&quot;&gt;AuthMode.NONE&lt;/code&gt; which significantly limits access to certain data. This is a good thing because you don’t want Addons running through your account changing things the minute you install it. Anyways, once it’s installed, you can then prompt the user to enable the Addon, which gives it access to all the necessary permissions.&lt;/p&gt;
-
-&lt;p&gt;I’m working on moving permissions around so it installs and adds a menu successfully &lt;em&gt;before&lt;/em&gt; activating the Addon. It’s turning into more of a trick than I thought it would.&lt;/p&gt;
-
-&lt;p&gt;More updates to come…&lt;/p&gt;</content><author><name>Brian Bennett</name></author><summary type="html">I thought I was ready for some beta testing of the Slide Tweeter AddOn. Unfortunately, I’ve run into a snag with authenticating some of the code.</summary></entry></feed>
+&lt;p&gt;&lt;em&gt;Featured image is &lt;a href=&quot;https://flickr.com/photos/maxschiffer/38579893751&quot; title=&quot;Find your way&quot;&gt;Find your way&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/maxschiffer&quot;&gt;maximilianschiffer&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nd/2.0/&quot;&gt;Creative Commons (BY-ND) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="Code" /><category term="wordpress" /><category term="jekyll" /><category term="blogging" /><category term="how-to" /><summary type="html">This is a long post in several parts. Jump to different sections using the links below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/5/4562/38579893751_b3b89701b7_c.jpg" /></entry></feed>
