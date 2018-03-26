@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Turning an Old Laptop into a Video Kiosk | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  Turning an Old Laptop into a Video Kiosk
+</h1>
+
+
+
+<p>My father-in-law came to me with an interesting idea. He wanted to create video kiosk for our church which would play videos on different mission organizations we’re involved with. The wall – previously – had photos and text about each missionary or organization, but he wanted to revamp.</p>
+
+<p>We initially tried to use PowerPoint and a custom keyboard to jump to different slides, but maintaining and updating that system wasn’t going to be very elegant or user friendly. So, about a year later, I had an “oh, duh” moment and realized we could do it as a static, locally-hosted website. It would be easy to build and even easier to maintain, so that’s what we did.</p>
+
+<p>In this post, I’ll talk about the hardware and software we used to get it finished. There are still some things to hammer out, but the bones of the project are done and tested successfully, so it seems like a good time to document it.</p>
+
+<h2 id="the-hardware">The Hardware</h2>
+
+<p>Our initial idea was to use a Raspberry Pi 3 to do everything because of it’s low price point and small size. Unfortunately, the RPi, in general, doesn’t handle web video too well. I looked into using the [kweb](https://www.raspberrypi.org/forums/viewtopic.php?t=40860) minimal web browser, which hooks into the native OMX Video Player on the Pi, but you can’t customize the look and playing full screen video had lots of menus. In the end, it was turning into a huge job to make it look polished, so we moved away from the Pi.</p>
+
+<p>My brother-in-law had an old HP laptop that had died when he tried to update it to Windows 8 (insert snarky Microsoft joke here). So, he donated it to the cause.</p>
+
+<p>I wiped the hard drive and installed Ubuntu Linux 16.04 LTS. It’s pretty lightweight and gets consistent updates. It’s also really user-friendly in case there is a problem with the laptop, so one of the office assistants can troubleshoot if I can’t make it. I also chose to stick with Linux because I can use SSH to log in via my Chromebook on Sunday mornings and run updates remotely if I need to.</p>
+
+<p>[<img src="https://flickr.com/photos/bennettscience/29893031255 &#8220;High security&#8221;" alt="](https://farm9.static.flickr.com/8044/29893031255_2a5ab84aac_z.jpg)" /></p>
+
+<p>[flickr photo](https://flickr.com/photos/bennettscience/29893031255 “High security”) shared by [bennettscience](https://flickr.com/people/bennettscience) under a [Creative Commons ( BY ) license](https://creativecommons.org/licenses/by/2.0/)</p>
+
+<p>You could definitely argue that running a full desktop environment for a simple web kiosk slows the machine and introduces a bunch of variables that could cause things to go wrong, which is 100% accurate. [OMG! Ubuntu! has a good article](http://www.omgubuntu.co.uk/2014/07/create-ubuntu-kiosk) on how to either convert a full machine to a dedicated kiosk **or** how to build one from scratch, but since I didn’t find the article until we were almost done, I decided not to go back and rework everything.</p>
+
+<p>For user interaction, we grabbed an [Intuos Art Small tablet](https://us-store.wacom.com/Catalog/Pen-Tablets/Intuos/Intuos-Art-Small-S01#undefined2) from Wacom for $100. It’s seated in a wall mount to lock it in place and hide the wires. Essentially, it’s a giant touchpad.</p>
+
+<p>[<img src="https://flickr.com/photos/bennettscience/29599235790 &#8220;Human/computer interface&#8221;" alt="](https://farm9.static.flickr.com/8151/29599235790_9030812f1a_z.jpg)" /></p>
+
+<p>[flickr photo](https://flickr.com/photos/bennettscience/29599235790 “Human/computer interface”) shared by [bennettscience](https://flickr.com/people/bennettscience) under a [Creative Commons ( BY ) license](https://creativecommons.org/licenses/by/2.0/)</p>
+
+<p>Finally, we bought a 55″ wall mounted TV. The laptop had an HDMI port, so that took care of high-definition video and audio.</p>
+
+<h2 id="the-software">The Software</h2>
+
+<p>I built the page with plain HTML and JavaScript. It’s currently being hosted locally on the machine to ensure smooth video with no buffering. I’m planning on testing the broadband rates via ethernet next time in church because over wifi we ran into issues. If I can get a good download rate, I’ll switch the site over to GitHub Pages so I can update remotely.</p>
+
+<h3 id="source">Source</h3>
+
+<p>The HTML and CSS is pretty standard. I didn’t want a ton of bloat, so I coded everything from scratch. You can take a [look at the markup on GitHub](https://github.com/bennettscience/church). There’s also a [live example](http://dev.ohheybrian.com/church) so you can see how it’s rendered.</p>
+
+<p>First, this is a hallway display. There will probably be times where people aren’t watching videos, in which case I want to avoid burning an image into the screen of the TV. I added a small jQuery function to bring up a prompt if no one touches the trackpad for 30 seconds. This also turned out to be handy because a lot of people walked up to the tv and tried touching it directly rather than using the trackpad input.</p>
+
+<p>To play the videos, I wanted each container to reference a hidden video `div`. I use jQuery to handle the element selection and JavaScript to pay attention to the play state. When a user clicks the tile, a fullscreen video starts playing. There is no keyboard for them to quit out of the video, so I don’t worry about `keypress` events. If they jump out of fullscreen using the playback controls, it saves the video location.</p>
+
+<h3 id="ubuntu-tweaks">Ubuntu tweaks</h3>
+
+<p>There were also some software tweaks I needed to make on the machine itself.</p>
+
+<p>I wanted a standard user to log in automatically. So, I created a generic user on the system and dropped the source files onto the desktop (more on that in a minute). Theoretically, the user will never get out of Chrome because there’s no keyboard available. When the computer boots, it logs into the generic user right away.</p>
+
+<p>Then, I edited the Startup Applications option. You can launch Chrome from the Terminal and you can specify which command to use in the settings. Using:</p>
+
+<p>`chromium-browser –kiosk [URL]`</p>
+
+<p>launches Chrome in the full screen kiosk mode and displays the website immediately after login.</p>
+
+<p>The laptop is mounted on the wall behind the TV. Ubuntu wasn’t recognizing the monitor when the lid was closed. There is a flag in `etc/systemd/logind.conf` that handles a dock, but we weren’t using one. So, I had to change the `HandleLidSwitch` flag to `ignore` to ignore the lid being closed ([thanks to this answer](http://askubuntu.com/questions/15520/how-can-i-tell-ubuntu-to-do-nothing-when-i-close-my-laptop-lid))</p>
+
+<p>Finally, because the laptop is mounted behind the TV on tracks with a padlock, it’s a pain to take it out to turn it on and off. I was able to automate the daily shutdown pretty easily by specifying a time using `crontab -e` (you have to be root to shut down). Startup was harder.</p>
+
+<p>After some research, I found that most computers have something called a Real Time Clock (RTC) synced with UTC. It can be used to set an alarm to wake the computer. You can test this by setting the clock to zero with:</p>
+
+<p><code class="highlighter-rouge">sudo echo 0 &gt; /sys/class/rtc/rtc0/wakealarm</code></p>
+
+<p>and then resetting it with:</p>
+
+<p><code class="highlighter-rouge">sudo echo `date '+%s' -d '+ 10 minutes'` &gt; /sys/class/rtc/rtc0/wakealarm</code></p>
+
+<p>Now that I knew the computer would turn itself back on, I could create a simple `bash` script to run with `cron` that would handle startup and shutdown daily:</p>
+
+<p>I stored the file in `/usr/bin` and made it executable with `chmod +x`.</p>
+
+<p>Then, I edited `crontab -e` to run the script daily. **Note that this specifies the shutdown time.** At 8 PM every day, the computer will shut down. The `shutwake` script resets the RTC alarm:</p>
+
+<p><code class="highlighter-rouge">&lt;br /&gt;
+0 8 * * * * /usr/bin/shutwake&lt;br /&gt;
+</code></p>
+
+<p>`cron` can be picky, so if you need more help, [this article helped a lot](http://www.nncron.ru/help/EN/working/cron-format.htm).</p>
+
+<p>The last thing we needed to work out was muting the audio during sermons so someone didn’t crank out a video in the middle of church. The video will still play with captions (accessibility FTW) and muting the audio turned out to be not too bad. I can toggle the pulse audio driver in Ubuntu with a simple <code class="highlighter-rouge">cron</code> job that runs on Sundays at 9:00 and 12:00 to turn the audio on and off:</p>
+
+<p><code class="highlighter-rouge">&lt;br /&gt;
+0 9 * * * 0 amixer -q -D pulse sset Master toggle&lt;br /&gt;
+</code></p>
+
+<p>[<img src="https://flickr.com/photos/bennettscience/29548284500 &#8220;The new mission video display in action at church.&#8221;" alt="](https://farm9.static.flickr.com/8500/29548284500_0fe579f043_z.jpg)" /></p>
+
+<p>[flickr photo](https://flickr.com/photos/bennettscience/29548284500 “The new mission video display in action at church. Blog post on construction and code coming.”) shared by [bennettscience](https://flickr.com/people/bennettscience) under a [Creative Commons ( BY ) license](https://creativecommons.org/licenses/by/2.0/)</p>
+
+<p>In the end, I’m really happy with how it turned out. Remote management and simple setup led to a really effective display for the wall.</p>
+
+<p>If you want more specifics about software or construction, leave a comment.</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  September
+  24th,
+  2016
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#All">All</a>
+ &nbsp;
+ 
+  <a href="/categories/#Projects">Projects</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Turning an Old Laptop into a Video Kiosk&amp;url=https://blog.ohheybrian.com/2016/09/turning-an-old-laptop-into-a-video-kiosk/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2016/09/turning-an-old-laptop-into-a-video-kiosk/&amp;title=Turning an Old Laptop into a Video Kiosk" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2016/09/turning-an-old-laptop-into-a-video-kiosk/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

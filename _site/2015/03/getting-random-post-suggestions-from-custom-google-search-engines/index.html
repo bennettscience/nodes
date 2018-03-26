@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Getting Random Post Suggestions from Custom Google Search Engines | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  Getting Random Post Suggestions from Custom Google Search Engines
+</h1>
+
+
+  <div class="bgimg" style="background-image:url('assets/img/wp-content/uploads/2015/03/15899278822_6972fbc99b_k.jpg'); background-size:cover; background-repeat:no-repeat; background-position: center center"></div>
+
+
+<p><strong>Update 3/31</strong> – After more tinkering, I’ve changed the code to be more stable with any changes Google makes in the future. Code snippets are up to date and irrelevant instructions are now <del>struck out</del>.</p>
+
+<hr />
+
+<p>You can create a custom Google search engine for your website (or group of websites) which can be very handy for a variety of reasons. If you’ve got a gigantic website, like <a href="http://www.twitter.com/cybraryman1">Jerry Blumengarten</a>, having a custom search bar can help find materials. If you’re working with students, a custom search can help limit where their information comes from. They’re easy to do, but there are some limitations, so be sure to read the Terms of Service if you’re going to set one up.</p>
+
+<hr />
+
+<p><a href="http://www.twitter.com/jstevens009">John Stevens</a> asked on Twitter if there was a way to get a random post from a custom search. I felt like there ought to be some way to do that, so I started digging. Because the <a href="http://www.fishing4tech.com/mtbos.html">MTBoS index of blogs</a> is on all different platforms and not networked in any particular way, it turned into more of a chore than I originally thought. Really, when you get down to it, randomizing search results is the anthesis of what search engines do, so we have to accomplish the “random” aspect of the Google search with a different method.</p>
+
+<p>I’ll be using a search for my own blog for the demo here (down below). Brace yourself for some code.</p>
+
+<p><del>First, rather than using the Google script you get from the Control Panel, use this HTML instead:</del></p>
+
+<p>You’re given one line of HTML to put in your page where you want to search bar to appear. Simply add the <code class="highlighter-rouge">button</code> line to add the random button:</p>
+
+<div id="wp-gistpenfile-google-cse-html">
+  <h3 class="wp-gistpenfile-title">
+    google-cse-html
+  </h3>
+
+  <pre class="gistpen line-numbers"><code class="language-markup">&lt;!-- Creates the search bar --&gt;
+&lt;gcse:search&gt;&lt;/gcse:search&gt;
+
+&lt;!-- This fires the random search topic function --&gt;
+&lt;button&gt;Random&lt;/button&gt;</code></pre>
+</div>
+
+<p>Line 5 adds a new button – the Random button – to the search form. That button is important. Rather than needing some text in the input field, a user can click on the Random button and some JavaScript magic will happen.</p>
+
+<hr />
+
+<p>If you want to use this, you’ll need to do a couple things:</p>
+
+<p><del>Make sure your site has jQuery installed. If you’re not sure, go to your site’s code and paste this in before the closing <code>header</code> tag:</del></p>
+
+<p>You’ll need to put a script in the footer of your site. You can also do this with a widget with a lot of platforms…there are too many to list, and the footer solution is usually the best approach. If you’re not sure what to do, leave a comment, and I can try to help you out.</p>
+
+<p>`<br />
+// This is the array holding the serach terms<br />
+var queries = [‘animals’,’dogs’,’cats’, ‘emu’,’fish’,’snakes’, ‘panda bears’,’meerkats’,’spiders’,’birds’];&lt;/p&gt;</p>
+<p>// When you click on the Random button, it'll grab a random search term and run it through Google<br />
+document.querySelector('button').addEventListener('click', function() {<br />
+	var search = google.search.cse.element.getElement('standard0');<br />
+  var rand = Math.floor(Math.random() * queries.length);<br />
+  search.execute( queries[rand] ); }, false);<br />
+`
+
+This script will take that Random button we added earlier and pop a random term into the search box and carry out the search. yOu need to set the terms in the array (line 3), each term in single quotes and each term separated by a comma. Make sure to keep that syntax correct or else it won&#8217;t work.
+
+<del>Also, if you try this on any site other than your own, you can run into issues. I&#8217;ve been testing this on Codepen.io with mixed results. Once thrown into my own page, though, it works just fine.</del> I&#8217;d create a new page on your site and drop the code into place. Test it as a draft page to make sure everything is kosher and then run with it.
+
+If you want to see a sample implementation (proof of concept, not really helpful), check out this spartan <a href="http://blog.ohheybrian.com/search" target="blank">search page</a>. You can type in a search term and hit submit to see how it works. Then, try hitting Random without putting any text in to see what it does.
+
+Do note that WordPress has a pretty good random post feature built-in. This is meant more for wider searches across multiple platforms using the Google index of sites.
+</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  March
+  30th,
+  2015
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#All">All</a>
+ &nbsp;
+ 
+  <a href="/categories/#Creative">Creative</a>
+ &nbsp;
+ 
+  <a href="/categories/#Technology">Technology</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Getting Random Post Suggestions from Custom Google Search Engines&amp;url=https://blog.ohheybrian.com/2015/03/getting-random-post-suggestions-from-custom-google-search-engines/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2015/03/getting-random-post-suggestions-from-custom-google-search-engines/&amp;title=Getting Random Post Suggestions from Custom Google Search Engines" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2015/03/getting-random-post-suggestions-from-custom-google-search-engines/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

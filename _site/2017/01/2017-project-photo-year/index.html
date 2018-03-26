@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      2017 Project: Photo Year | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  2017 Project: Photo Year
+</h1>
+
+
+
+<p>Pictures launch stories. I take a lot of photos and like most people, they stay on my phone. I used to use Instagram, but I’m not happy with their terms or use limitations on photos (ever tried to embed an image? It’s a nightmare). Maybe I’m an idealist and this is a funk, but whatever.</p>
+
+<p>I’m posting to <a href="http://flickr.com/photos/bennettscience">Flickr</a> more and more regularly and I decided to make a small project for 2017. I’m going to tag a photo each day that will push it and the description over to a new blog I’m calling <a href="http://photoyear.ohheybrian.com">The Photoyear</a>. It’ll syndicate that photo (technical stuff below) and turn it into a blog post. You can subscribe via RSS over there if you’d like. Sometimes, I’ll cross post it here, but that will be a place for pictures and their stories for the next year.</p>
+
+<p>Thanks, as always, for reading.</p>
+
+<hr />
+
+<h2 id="setting-up-flickr-syndication">Setting up Flickr syndication</h2>
+
+<p>I started by writing more descriptive…descriptions…with my photos. That led to the idea of running a blog entirely on photos – content and all. Since I’m already doing that on Flickr, it made sense to try and syndicate it back to a blog of some kind. <a href="http://www.twitter.com/cogdog">Alan Levine</a> is the king of all things RSS. Some of his posts led to working solutions.</p>
+
+<p>Recently, <a href="http://cogdogblog.com/2016/12/felix-tweets/">Alan posted where to find the Flickr RSS feed</a> for public photos. Instead of grabbing everything I post (often more than one photo per day) I wanted to grab just one. I was going to manage that by adding photos to an album, but you can’t do that anymore (not with an RSS URL, anyways). Sad trombone. So, I stick to tags.</p>
+
+<p>I fired up a subdomain – <a href="http://photoyear.ohheybrian.com"><strong>photoyear</strong>.ohheybrian.com</a> and installed WordPress and the <a href="https://wordpress.org/plugins/feedwordpress/">FeedWordPress plugin</a> to syndicate posts from any RSS feed. Running out of the box, it grabs the <code class="highlighter-rouge">&lt;description&gt;</code> tag only from the XML:</p>
+
+<p>The immediate problem is the size of the embedded image. The <code class="highlighter-rouge">src</code> attribute is <code class="highlighter-rouge">https://farm1.staticflickr.com/543/31231759933_ba613deec1_m.jpg</code>, meaning the medium sized image is embedded, which is tiny. I had to get brave and check out a PHP solution.</p>
+
+<p>In <code class="highlighter-rouge">functions.php</code>, I added a new filter (thanks to the suggestion of…you guessed it…Alan) which simply changes the <code class="highlighter-rouge">_m.jpg</code> to <code class="highlighter-rouge">_b.jpg</code> for a nice, full-width image.</p>
+
+<p>I’m still not totally happy with my PHP solution because each post is going to come with, “a new photo by bennettscience” appended at the top. I tried using a <code class="highlighter-rouge">preg_replace</code> function to find the string and remove it (it’s always the same), but I didn’t have any luck. If you have a suggestion, I’d love some help figuring that snippet out.</p>
+
+<p>Anyways, all said and done, you can check out <a href="http://photoyear.ohheybrian.com">The Photoyear</a> now and then to see what’s up. I’m looking forward to reading back over everything as we move through 2017.</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  January
+  1st
+    ,
+  2017
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#All">All</a>
+ &nbsp;
+ 
+  <a href="/categories/#Life">Life</a>
+ &nbsp;
+ 
+  <a href="/categories/#Projects">Projects</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=2017 Project: Photo Year&amp;url=https://blog.ohheybrian.com/2017/01/2017-project-photo-year/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2017/01/2017-project-photo-year/&amp;title=2017 Project: Photo Year" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2017/01/2017-project-photo-year/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

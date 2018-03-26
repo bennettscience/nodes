@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/nodes/_site/feed.xml" rel="self" type="application/atom+xml" /><link href="/nodes/_site/" rel="alternate" type="text/html" /><updated>2018-03-23T08:05:39-04:00</updated><id>/nodes/_site/</id><title type="html">nodes</title><subtitle></subtitle><author><name>Brian Bennett</name></author><entry><title type="html">Goolge Apps Script Knowledgebase Suite</title><link href="/nodes/_site/2018/03/goolge-apps-script-knowledgebase-suite.html" rel="alternate" type="text/html" title="Goolge Apps Script Knowledgebase Suite" /><published>2018-03-20T13:31:58-04:00</published><updated>2018-03-20T13:31:58-04:00</updated><id>/nodes/_site/2018/03/goolge-apps-script-knowledgebase-suite</id><content type="html" xml:base="/nodes/_site/2018/03/goolge-apps-script-knowledgebase-suite.html">&lt;p&gt;This is another entry into the “fun, but probably not feasible” folder.&lt;/p&gt;
+
+&lt;p&gt;A colleague and I have been trying to show the importance of getting a knowledgebase set up for our teachers. It’s been a back-burner issue for a long time because:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;we’ve never had one, so there isn’t really a pain point, and,&lt;/li&gt;
+  &lt;li&gt;we’re trying to roll out 3,500 iPads to 9-12th grades and there are some small projects to get done with that process.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There’s a little bit of hyperbole there, but in essence, it would be nice, but not now.&lt;/p&gt;
+
+&lt;p&gt;Google released Hangouts Chat for GSuite users. The main reason was to compete with enterprise chat apps like Slack (but you won’t hear Google saying that directly). Hangouts Chat allows you to set up discussions with teams that are threaded based on rooms. They’ve also added an automation API so users can find, or write, bots to discussions. I got Chat turned on for our domain just to see what it was like. I was able to use &lt;a href=&quot;https://codelabs.developers.google.com/codelabs/chatbase/index.html#0&quot;&gt;Google’s code lab guide&lt;/a&gt; to get a simple bot up and running. It pulled open tasks for a user from our project management suite and I was able to use existing code to get the data into the bot. In all, it took me about two hours to have a working prototype.&lt;/p&gt;
+
+&lt;p&gt;I decided to build a helpdesk chat bot which could pull answers to common technical problems our teachers face. That ballooned into a web app to pair with the bot because…why not.&lt;/p&gt;
+
+&lt;h2 id=&quot;apps-script-knowledgebase&quot;&gt;Apps Script Knowledgebase&lt;/h2&gt;
+
+&lt;p&gt;I’ll go through some of the code, &lt;a href=&quot;https://github.com/bennettscience/apps-script-knowledgebase&quot;&gt;but all of it is on GitHub&lt;/a&gt;. It’s written in Apps Script because again, a lot of the code was preexisting so I didn’t have to start from scratch. Most of it is modified from standalone functions I have running in separate functions on other sheets. The real challenge in this task was to wrangle the user input into something usable by the script.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-database&quot;&gt;The database&lt;/h2&gt;
+
+&lt;p&gt;First things first - we needed a database. I threw together a spreadsheet with several data fields that hold different types of information. I started with our platforms as a high level filter and then added some tags. The user can search for all platform-related entries or narrow them down with keyword tags.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/dbss.jpg&quot;&gt;&lt;img src=&quot;/assets/img/dbss.jpg&quot; alt=&quot;Screenshot of the database sheet&quot; /&gt;&lt;/a&gt;
+&lt;em&gt;click for a larger view&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;There are two additional sheets to the template: one to authenticate users and one to build a list of district platforms. Authenticated users have a button to add new articles into the database from the web app (see below). Editing a &lt;em&gt;really&lt;/em&gt; big spreadsheet, especially when typing multi-line, HTML formatted entries, gets really cumbersome, so I wanted a way to do that through the website. Additionally, standardizing the platform options helps the user narrow searches right from the start so they can find information quickly.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-bot&quot;&gt;The bot&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://codelabs.developers.google.com/codelabs/chat-apps-script/#0&quot;&gt;Setting up the bot is covered by Google’s Code Lab&lt;/a&gt;, so I’m not going into detail here. The main piece of the bot is that it listens for a mention by a user, finds the information, and returns a card-formatted response.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/videocard.jpg&quot; alt=&quot;Screenshot of a card returned to a user's question&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Our thinking for this app is that someone wants a quick video on how to do something, so only videos are returned. The main challenge is getting meaningful information from the user mention in order to match database entries.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/bennettscience/798cf726cd73eca206e9a45a09693ad1.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The regular expression looks for any of the keywords mentioned by the user in a string. This was easier than trying to match array values and provides consistent results. Right now, a user can send simple requests like “Google” or “Canvas” to get general results. They can also include some refining search terms, like “Google gmail” or “Canvas assignment” to narrow searches down. If there are no videos that match the search, they’re pushed over to the web app which has articles that do not include video results. More work could be done to refine how the script processes user input to improve the experience.&lt;/p&gt;
+
+&lt;p&gt;The script takes the string an creates a regular expression which is then used to match a string built from columns one and two of the spreadsheet. If a result is matched, the YouTube URL is returned in an array.&lt;/p&gt;
+
+&lt;p&gt;Once the YouTube videos are grabbed from the sheet, they’re broken into video ID strings and put through the YouTube API to get the video title and thumbnail. The bot builds a card to return to the user with suggested videos. If there aren’t any videos available, the user is given a link to the web app where they can find written articles on their topic.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-web-app&quot;&gt;The web app&lt;/h2&gt;
+
+&lt;p&gt;We also threw together a web app to display information that &lt;em&gt;isn’t&lt;/em&gt; in video form. The idea being that these are longer articles that have step-by-step instructions and are meant to be used in conjunction with the chat application. Lookup can be done by either passing query parameters in the URL to the app or using the sidebar form to search for keywords within a given topic.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/webapp.jpg&quot;&gt;&lt;img src=&quot;/assets/img/webapp.jpg&quot; alt=&quot;Web app view of the knowledgebase&quot; /&gt;&lt;/a&gt;
+&lt;em&gt;click for a larger view&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Web apps also allow you to append queries to the published URL out of the box. If a query string is included, the app creates an object that can be passed through your script functions to build a display from a template dynamically. For instance, navigating to&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;https://script.google.com/.../exec?platform=ios&amp;amp;tags=airplay&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;takes you to this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/img/webapp2.jpg&quot;&gt;&lt;img src=&quot;/assets/img/webapp2.jpg&quot; alt=&quot;Web app loaded from a URL parameter string&quot; /&gt;&lt;/a&gt;
+&lt;em&gt;click for a larger view&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;When a video isn’t returned, we’ll pass back the user string to jump right to relevant answers.&lt;/p&gt;
+
+&lt;h2 id=&quot;challenges&quot;&gt;Challenges&lt;/h2&gt;
+
+&lt;p&gt;Writing logic to manipulate and understand user input that can vary wildly is very difficult. I’m relying on simple prompts (platform + search keys) to help return a video on &lt;em&gt;every&lt;/em&gt; search. As the database grows, results will also improve. I’d like to spend more time refining the bot script to better process and use the chat messages. The regular expression approach is pretty brute-strength, but it works for most searches.&lt;/p&gt;
+
+&lt;p&gt;A bigger problem I discovered is that hosting a web app &lt;em&gt;and&lt;/em&gt; a bot in the same script file causes things to break. Google makes it easy to &lt;a href=&quot;NEED URL&quot;&gt;deploy a bot&lt;/a&gt; from an Apps Script project. Hosting a web app is also quite easy and uses a similar ID string. What I think happens is that those ID numbers are conflicted when both are hosted from the same project. The bot’s &lt;code class=&quot;highlighter-rouge&quot;&gt;onMessage&lt;/code&gt; listener wouldn’t register an event with a web app published. One solution is to host the bot in an unbound script that points to the same spreadsheet via the key. Another (probably better, in the long run) solution would be to write a web view that is hosted on a school server and access the Google Apps Script API to display database queries. &lt;a href=&quot;https://stackoverflow.com/a/49114086/2278429&quot;&gt;More on that in this long demo.&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://flickr.com/photos/140768947@N06/35591920971&quot; title=&quot;In the knowledge economy, we need a Netflix of education - TechCrunch&quot;&gt;In the knowledge economy, we need a Netflix of education - TechCrunch&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/140768947@N06&quot;&gt;DigitalMajority&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-sa/2.0/&quot;&gt;Creative Commons (BY-NC-SA) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="google apps script" /><category term="javascript" /><category term="knowledgebase" /><summary type="html">This is another entry into the “fun, but probably not feasible” folder.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/5/4234/35591920971_ccfb2a05ac_b.jpg" /></entry><entry><title type="html">Planning a Flipped Unit Part 4</title><link href="/nodes/_site/2018/02/planning-a-flipped-unit-part-4.html" rel="alternate" type="text/html" title="Planning a Flipped Unit Part 4" /><published>2018-02-19T13:42:37-05:00</published><updated>2018-02-19T13:42:37-05:00</updated><id>/nodes/_site/2018/02/planning-a-flipped-unit-part-4</id><content type="html" xml:base="/nodes/_site/2018/02/planning-a-flipped-unit-part-4.html">&lt;p&gt;Now it’s down to the &lt;em&gt;What&lt;/em&gt; of your unit. Standards have been identified and selected, themes established, and your main mechanism for assessment has been designed to check what students know and can do at the conclusion of the unit.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/modcircle.png&quot; alt=&quot;&amp;quot;Concentric circles, 'Why' on the outside, 'How' one ring in, 'What' in the center&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The center of the Golden Circle isn’t the most important. It’s the component that fits within each of the larger rings. The &lt;em&gt;What&lt;/em&gt; of your lessons should drive students toward successful completion of the assessment mechanism which, in turn, shows you what the students have learned of the identified standards.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;What&lt;/em&gt; is hard to specify, because the variety of activity in a flipped environment depends on individual student needs. &lt;a href=&quot;http://www.wisd.org/users/0001/docs/GVC/5E%20Model.pdf&quot;&gt;Using the 5E structure&lt;/a&gt; helped me plan meaningful and varied activities all within the large scope of the unit.&lt;/p&gt;
+
+&lt;p&gt;If you’re not familiar with 5E, here’s a breakdown:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Engage&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Explore&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Explain&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Elaborate&lt;/li&gt;
+  &lt;li&gt;Evaluate&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I bolded Engage and Explain because it’s where I focused much of my effort in early unit planning.&lt;/p&gt;
+
+&lt;h3 id=&quot;engage&quot;&gt;Engage&lt;/h3&gt;
+
+&lt;p&gt;It’s easy for me to stand up front and teach a topic. I can communicate ideas clearly and succinctly and ask students to demonstrate understanding with a variety of mechanisms. But, that sucks the joy out of learning something new (not that &lt;em&gt;all&lt;/em&gt; students will love chemistry, but you get the idea). &lt;a href=&quot;https://twitter.com/ramusallam&quot;&gt;Ramsey Musallam&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/ddmeyer&quot;&gt;Dan Meyer&lt;/a&gt; are two &lt;em&gt;really&lt;/em&gt; smart people I found early in this transition who helped frame my view of the engage portion.&lt;/p&gt;
+
+&lt;p&gt;Ramsey’s &lt;a href=&quot;http://www.cyclesoflearning.com/home/explore-flip-apply-example&quot;&gt;Explore-Flip-Apply&lt;/a&gt; structure fit well with my goals. Science is the practice of observation and I wasn’t great at getting students to observe phenomena. Use EFA at times, I was able to both engage the students in an interesting question and push them to draw conclusions based on lab experience.&lt;/p&gt;
+
+&lt;p&gt;Dan has pioneered &lt;a href=&quot;http://blog.mrmeyer.com/2011/the-three-acts-of-a-mathematical-story/&quot;&gt;3 Act Math&lt;/a&gt; approach, which works to drive student inquisitiveness as a carrier for math instruction. I took his advice about &lt;a href=&quot;https://youtu.be/FRsE6mKkDjw?t=21m57s&quot;&gt;practicing capturing perplexing things&lt;/a&gt; and started trying to photograph or film things that would be useful for engaging my students. (The previous link is a video about halfway through Dan’s 2014 CUE keynote. I recommend watching the entire presentation if you can find the time.)&lt;/p&gt;
+
+&lt;p&gt;This is &lt;em&gt;hard&lt;/em&gt; to do, mainly because what I find engaging might not be engaging to students at all. Expect to swing for the fences and miss with some. As you hone your units, your engage activities will improve.&lt;/p&gt;
+
+&lt;h3 id=&quot;explain&quot;&gt;Explain&lt;/h3&gt;
+
+&lt;p&gt;After exploring an idea, there will &lt;em&gt;inevitably&lt;/em&gt; be misconceptions which need to be corrected. This is the &lt;em&gt;Flip&lt;/em&gt; in Ramsey’s Explore-Flip-Apply. I can assess and gather information about student understanding as they explore and then I can use the power of a camera and a short video to instruct where students need the intervention.&lt;/p&gt;
+
+&lt;p&gt;If you’ve been flipping for a while, you know where students struggle. You probably already have a library of support videos you can filter into the unit. This also helps you identify gaps in your own instruction! Pay attention to what material students need additional help with and continue to build those resources out. Structuring your unit (not just a lesson) this way will also help you target &lt;em&gt;which&lt;/em&gt; lessons are the &lt;em&gt;most&lt;/em&gt; important, and that’s what students do. You don’t have to assign everything every year because the goals of the unit stay the same while student understanding changes year to year or class to class.&lt;/p&gt;
+
+&lt;h3 id=&quot;more-on-5e&quot;&gt;More on 5E&lt;/h3&gt;
+
+&lt;p&gt;Each step in the 5E structure were not prepared for every single day of every single unit. Some components were easier to run across several days (or even weeks) because of low overhead (no prep, etc). Others were limited to specific dates and times. This is particularly important in a science classroom because of lab availability and safety considerations. Giving students choice in how they tackle a particular activity does not mean &lt;em&gt;carte blanche&lt;/em&gt;. Specific constructs and limitations are acceptable.&lt;/p&gt;
+
+&lt;p&gt;Without repeating the linked 5E article above, Elaboration focuses on connecting to other ideas rather than staying within the immediate context. This is a great place to spiral back to previous units or to build anticipation for future units. It forces you to continue to consider the connections at the &lt;em&gt;standards&lt;/em&gt; level rather than looking 24 hours in the future. Not only are your units more powerful, but your course as a whole takes on a larger internal support structure.&lt;/p&gt;
+
+&lt;h3 id=&quot;final-thoughts&quot;&gt;Final Thoughts&lt;/h3&gt;
+
+&lt;p&gt;Much of this is written from secondary math/science perspective because that’s my experience. If you’re not in the same context, pay attention to the support structures rather than the individual examples. How are your standards mapped out? Have you mapped them out? Start large and work &lt;em&gt;down&lt;/em&gt; to the day to day. This ensures students have a consistent experience and that the unit has internal fidelity to specific ideas. Looking day to day narrows the scope and makes it too easy to dictate the entire path of the course.&lt;/p&gt;
+
+&lt;p&gt;This is a skill that develops over time. There are strong communities of teachers on the &lt;a href=&quot;https://flippedlearning.org&quot;&gt;FLN website&lt;/a&gt; and &lt;a href=&quot;https://flipclass.slack.com&quot;&gt;Slack channel&lt;/a&gt;. Get connected with others to solicit feedback and suggestions from people working on the same ideas. As you continue to zoom your lens out and work down to individual lessons your skill will build and your students will benefit.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading the series. If you have questions, leave a comment or head over to &lt;a href=&quot;https://ohheybrian.com&quot;&gt;my website&lt;/a&gt; and drop me a line.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Featured image by &lt;a href=&quot;https://unsplash.com/@dsmacinnes&quot;&gt;Danielle MacInnes&lt;/a&gt; on &lt;a href=&quot;https://www.unsplash.com&quot;&gt;Unsplash&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="unit" /><category term="planning" /><category term="instruction" /><category term="curriculum" /><summary type="html">Now it’s down to the What of your unit. Standards have been identified and selected, themes established, and your main mechanism for assessment has been designed to check what students know and can do at the conclusion of the unit.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://images.unsplash.com/photo-1489533119213-66a5cd877091?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7c006c52fd09caf4e97536de8fcf5067&auto=format&fit=crop&w=1051&q=80" /></entry><entry><title type="html">Will Hide Ads in Exchange for Bitcoin</title><link href="/nodes/_site/2018/02/will-hide-ads-in-exchange-for-bitcoin.html" rel="alternate" type="text/html" title="Will Hide Ads in Exchange for Bitcoin" /><published>2018-02-13T11:39:00-05:00</published><updated>2018-02-13T11:39:00-05:00</updated><id>/nodes/_site/2018/02/will-hide-ads-in-exchange-for-bitcoin</id><content type="html" xml:base="/nodes/_site/2018/02/will-hide-ads-in-exchange-for-bitcoin.html">&lt;p&gt;Several articles swirled around early this week about Salon.com’s (sorry, not going to link it) new ad-blocking choice to users. You can:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Disable your ad blocker to see the content, including ads.&lt;/li&gt;
+  &lt;li&gt;Keep your ad blocker on, but allow Salon to mine bitcoin with “spare processing power”&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This is a terrible, terrible system for several reasons.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin isn’t mined with “spare processing power,” as the FAQ claims. It’s mined with electricity, that you pay for, for no reason at all. I’m not going to go into super detail because &lt;a href=&quot;https://davidgerard.co.uk/blockchain/2017/11/15/bail-bloc-mine-monero-generate-co2-send-less-money-than-you-spent-to-charity/&quot;&gt;this post&lt;/a&gt;, written on a related topic, has a great explainer on how Bitcoin “mining” actually works (jump to “Why this is bad” in the post).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;&amp;quot;/assets/img/ghostery.jpg&amp;quot;&quot; alt=&quot;&amp;quot;Ghostery report of ad scripts on salon.com&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Also included in the FAQ, “nothing is installed” on the user’s computer if they choose to opt in to mining. This also isn’t true. It’s true in the sense that I don’t have to download and install a program in the traditional sense. But, if I opt in, Salon installs a script silently through the browser which begins to work in the background &lt;em&gt;with no notice to the user.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Also this week (coincidentally), &lt;a href=&quot;https://techcrunch.com/2018/02/12/ico-snafu/&quot;&gt;there was a malicious mining script&lt;/a&gt; placed on &lt;em&gt;thousands&lt;/em&gt; of government websites. When a user loaded a page, the mining script went to work at the expense of the user’s computer. As cryptocurrencies continue to bubble, I think we’ll be seeing more and more of these “opportunities” at the expense of the user.&lt;/p&gt;
+
+&lt;p&gt;The problem with ads isn’t the fact that I’m seeing ads. The problem is that ad technology on the web is invasive, expansive, opaque, and a really terrible experience for most users. Ad software builds a profile of an individual to target more “relevant” ads based on your browsing history. If a company tracks you on a particular page, that page’s content is stored and called up next time you hit a page with that company’s software.&lt;/p&gt;
+
+&lt;p&gt;These algorithms are totally opaque - no one knows &lt;em&gt;exactly&lt;/em&gt; how they work, which means you - the user - are a product, not the consumer. As a consumer, sure, I want to see relevant ads. But that data which is used to show me advertisements is &lt;em&gt;also&lt;/em&gt; sold by clearinghouses to &lt;em&gt;other&lt;/em&gt; companies for profit. I’m a transactional item, not a customer. The nature of advertising on the Internet has fundamentally changed.&lt;/p&gt;
+
+&lt;p&gt;Salon’s adoption and PR to convince people that this is a fair exchange is misleading and doesn’t do anything to address the fact that Salon-the-organization is getting money from companies with shady, at best, business practices. Selling readers while claiming they’re selling ad space takes advantage of illiteracy in how the Internet works. Masking this practice is underhanded and should be recognized.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;Featured image: &lt;a href=&quot;https://flickr.com/photos/taroonga/33400022060&quot; title=&quot;Stop sign&quot;&gt;Stop sign&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/taroonga&quot;&gt;deb &amp;amp; devin etheredge&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc/2.0/&quot;&gt;Creative Commons (BY-NC) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="cryptocurrencies" /><category term="ads" /><category term="adblocking" /><category term="data" /><category term="advertisement" /><summary type="html">Several articles swirled around early this week about Salon.com’s (sorry, not going to link it) new ad-blocking choice to users. You can:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c2.staticflickr.com/4/3894/33400022060_335dba15cd_c.jpg" /></entry><entry><title type="html">Planning a Flipped Unit Part 3</title><link href="/nodes/_site/2018/01/planning-a-flipped-unit-part-3.html" rel="alternate" type="text/html" title="Planning a Flipped Unit Part 3" /><published>2018-01-23T08:10:49-05:00</published><updated>2018-01-23T08:10:49-05:00</updated><id>/nodes/_site/2018/01/planning-a-flipped-unit-part-3</id><content type="html" xml:base="/nodes/_site/2018/01/planning-a-flipped-unit-part-3.html">&lt;p&gt;Once you know why you’re teaching what you’re teaching, you need to define how you’ll know what students have learned or not learned. What task(s) will students complete in order to show what they’ve learned as you move through the unit? Keep in mind that this does &lt;strong&gt;not&lt;/strong&gt; necessarily have to be a written test! This step in planning helps you meaningfully outline the &lt;em&gt;Why&lt;/em&gt; of your unit.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;&amp;quot;/assets/img/how.jpg&amp;quot;&quot; alt=&quot;&amp;quot;Concentric circles, 'Why' in the outermost, 'How' on the interior&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;default-action&quot;&gt;Default Action&lt;/h2&gt;
+
+&lt;p&gt;Defaults surround us. When I use my computer, I have a default web browser. I have default settings on my phone. When I get home in the evenings, I change into more comfortable clothes. Defaults help us work effectively and efficiently to accomplish a specific task.&lt;/p&gt;
+
+&lt;p&gt;We also have defaults in our teaching. When I need to quickly assess students, my default is usually a quick poll (choose the best answer from the board) or some targeted questioning to reiterate some important points from the activity. Those quick checks are routine for my students and the default action helps me effectively check for understanding without significant interruption of the class flow.&lt;/p&gt;
+
+&lt;p&gt;Defaults can also be dangerous. If I’m going out in the evening, my default clothing choice would not be appropriate. Asking students to answer a single multiple choice question (probably) won’t show me deep understanding. Our default actions need to be overridden from time to time depending on the situation. Relying on the default is particularly dangerous when you’re planning your unit assessment.&lt;/p&gt;
+
+&lt;h2 id=&quot;understanding-by-designing&quot;&gt;Understanding By Designing&lt;/h2&gt;
+
+&lt;p&gt;This portion of the planning process relies heavily on Understanding By Design (UbD), also called “backward design,” developed by Grant Wiggins and Jay McTigh. UbD outlines seven key principles which permeate all instructional decisions. I’m not going to go in depth on the entire framework in this post, so I encourage you to &lt;a href=&quot;http://www.ascd.org/ASCD/pdf/siteASCD/publications/UbD_WhitePaper0312.pdf&quot;&gt;go read more about how to implement UbD&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;At it’s core, UbD “helps focus curriculum and teaching on the development and deepening of student understanding.” The &lt;em&gt;How&lt;/em&gt; defines how students &lt;strong&gt;demonstrate their learning.&lt;/strong&gt;  I cannot answer the question of whether or not students learned without some kind of assessment mechanism. The Golden Circle parallels the three-step process outlined by UbD:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Desired Results&lt;/li&gt;
+  &lt;li&gt;Evidence&lt;/li&gt;
+  &lt;li&gt;Learning Plan&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We’ve already outlined our desired results by defining and organizing standards. Now it’s time to dive into the assessment mechanisms that will flow throughout your unit.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-will-you-know-what-they-know&quot;&gt;How Will You Know What They Know?&lt;/h2&gt;
+
+&lt;p&gt;The purpose of defining the assessment &lt;em&gt;before&lt;/em&gt; the lessons is to ensure you are hyper-focused on teaching the standards you outlined in the &lt;em&gt;Why&lt;/em&gt;. This is absolutely teaching to the test &lt;strong&gt;and it’s absolutely okay.&lt;/strong&gt; Understand that teaching students the material &lt;em&gt;you&lt;/em&gt; outlined is expected! Don’t fall into the trap of labelling your instruction as “narrow” or “prescribed” because &lt;em&gt;you&lt;/em&gt; define the scope of your instruction. If you find something is missing, you can add it to your unit plan! This is an important component of planning because your assessment, to be reliable, valid, and &lt;em&gt;fair&lt;/em&gt;, should reflect the material you set out to teach.&lt;/p&gt;
+
+&lt;p&gt;As you learn more about UbD, this portion of your unit planning is for the culminating event, not necessarily day-to-day formative assessments. The formative checks are critical because they help you “correct the ship,” as it were, but those are more aligned to daily tasks, so we’ll plan those in the next step.&lt;/p&gt;
+
+&lt;p&gt;There are six facets for understanding defined by Wiggins and McTigh that you should work to include: explanations, interpretation, application, perspective, empathy, and self-knowledge. Your culminating event should be broad enough for students to demonstrate many of these facets and narrow enough to ensure they are showing their learning on the defined standards.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-sample-culminating-event&quot;&gt;A Sample Culminating Event&lt;/h2&gt;
+
+&lt;p&gt;You have complete control over the culminating event, so try to avoid your default action and plan a true &lt;em&gt;event&lt;/em&gt;, not just an assessment.&lt;/p&gt;
+
+&lt;p&gt;In my general chemistry course, we spent a significant amount of time on the properties of atoms. Understanding how these little pieces of matter behave is important in later concepts, like describing bonding or chemical reactions. Luckily, we have the Periodic Table of Elements which describes and organizes these properties. A major component was my emphasis on the fact that the periodic table is relatively new - only in its current form since the early 1900’s after many years of experiments and revisions. I needed my students not only know how to read the periodic table (explain and interpret), but to also relate to it’s development and connect it to the nature of science as a revision-based process.&lt;/p&gt;
+
+&lt;p&gt;I can definitely assess their knowledge using a multiple choice and essay test, and those were a component as we went through the unit in the form of quizzes. But, I’m missing the other half of the six facets of understanding - empathy, perspective, and self-knowledge. By using a unit test as my culminating event, I was missing opportunities for metacognition and growth.&lt;/p&gt;
+
+&lt;p&gt;In 2006, &lt;a href=&quot;http://www.nsta.org/publications/news/story.aspx?id=52119&quot;&gt;NSTA published an article&lt;/a&gt; by Vicki Volpe which described a Periodic Table of Cereal Boxes. &lt;a href=&quot;https://docs.google.com/document/d/1CEINMlx7xphIXfSf_SCpjkvWtZ3O4AkyGQQyd5uDZns/edit&quot;&gt;I modified the project&lt;/a&gt; and added a reflection my students would do to show their understanding at the end of the unit. By putting students in the driver’s seat, I was able to watch them assimilate all of the principles they’d learned over the course of the unit to create something novel. Beyond the chemistry skills, students felt the &lt;em&gt;frustration&lt;/em&gt; of building a meaningful representation, not unlike the early organizers of the periodic table. The process involved research, drafting, and revision - and not just one cycle. The reflection included a strengths/weaknesses analysis of their table and many recognized that it wasn’t perfect, but it worked given the data they had access to.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-role-of-how&quot;&gt;The Role of How&lt;/h2&gt;
+
+&lt;p&gt;The culminating event brings into alignment to the entire unit. Every standard was assessed in some way, but not in isolation. All learning is connected and our unit assessments should highlight and expect students to make those connections. Designing your culminating event should unify the learning standards and give students opportunity to show the facets outlined in UbD. As a bonus, these holistic assessment items don’t &lt;em&gt;feel&lt;/em&gt; like assessments. The conversation changes from “we have a test over this stuff” to, “use what you know and &lt;em&gt;show&lt;/em&gt; me what you can do with it.” It’s a rolling performance event for students with checks along the way to ensure a supportive learning environment. This is particularly evident in a flipped environment where students can go back to review material as needed. The support structure is built right in!&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-next&quot;&gt;What’s Next?&lt;/h2&gt;
+
+&lt;p&gt;Once you’ve defined the &lt;em&gt;Why&lt;/em&gt; and the &lt;em&gt;How&lt;/em&gt;, you have a framework which provides support for the &lt;em&gt;What&lt;/em&gt; - the day to day items. We’ll look at that in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;The featured image is &lt;em&gt;&lt;a href=&quot;https://flickr.com/photos/19779889@N00/38391183672&quot; title=&quot;Geared&quot;&gt;Geared&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/19779889@N00&quot;&gt;arbyreed&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-sa/2.0/&quot;&gt;Creative Commons (BY-NC-SA) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="instruction" /><category term="assessment" /><category term="flipped learning" /><category term="unit" /><category term="planning" /><summary type="html">Once you know why you’re teaching what you’re teaching, you need to define how you’ll know what students have learned or not learned. What task(s) will students complete in order to show what they’ve learned as you move through the unit? Keep in mind that this does not necessarily have to be a written test! This step in planning helps you meaningfully outline the Why of your unit.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/5/4517/38391183672_77c3414d93_c.jpg" /></entry><entry><title type="html">Rebooting My Coaching</title><link href="/nodes/_site/2018/01/rebooting-my-coaching.html" rel="alternate" type="text/html" title="Rebooting My Coaching" /><published>2018-01-17T14:41:20-05:00</published><updated>2018-01-17T14:41:20-05:00</updated><id>/nodes/_site/2018/01/rebooting-my-coaching</id><content type="html" xml:base="/nodes/_site/2018/01/rebooting-my-coaching.html">&lt;p&gt;I planned, and ran, a really unsuccessful series of PD for a group of teachers this year. Unfortunately, I wasn’t wise enough to accept the non-success until we’d reached almost a breaking point in the group.&lt;/p&gt;
+
+&lt;p&gt;The idea was to focus on instructional methods with, or without, technology. The problem was that it wasn’t what the teachers needed (or wanted) and I was too stubborn to look past my own biases and fix the course.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Instruction makes the difference in schools.&lt;/em&gt; Teaching a poor lesson with an iPad in your hand is just as bad as teaching a poor lesson without an iPad. With most tech rollouts, &lt;em&gt;all&lt;/em&gt; of the focus is on the technology PD and little time or thought is given to how to build lessons and experiences which seamlessly incorporate the available tech. So, this PD focused on watching one another teach. If the lesson had tech in it, great. Let’s look at what worked and then try to incorporate those principles in our own practice. If it didn’t have tech, still great! What worked? What skills did the teacher show that can be incorporated into our practice?&lt;/p&gt;
+
+&lt;p&gt;I didn’t clarify the difference. The PD was labelled (partially my fault, but not completely) as “technology PD.” Week after week, I came in talking about teaching and they expected technology tips and tricks.&lt;/p&gt;
+
+&lt;p&gt;Making it worse, I heard indirectly that these workshops were going poorly and that most people dreaded the sessions. I knew they were tough - I was pushing boundaries and comfort zones. What I didn’t know was that people felt confused and frustrated. I had no idea the group felt that way because no one told me - not on feedback surveys each month and not in person when I asked.&lt;/p&gt;
+
+&lt;p&gt;We’re so afraid of hurting one another’s feelings about teaching that we &lt;em&gt;don’t talk about what’s really happening.&lt;/em&gt; That has to change.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;Featured image &lt;a href=&quot;https://flickr.com/photos/christianspenceranderson/3339247264&quot; title=&quot;old jumper cables inside an old barn, frisco, texas&quot;&gt;old jumper cables inside an old barn, frisco, texas&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/christianspenceranderson&quot;&gt;coltera&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-sa/2.0/&quot;&gt;Creative Commons (BY-NC-SA) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="coaching" /><category term="reflection" /><summary type="html">I planned, and ran, a really unsuccessful series of PD for a group of teachers this year. Unfortunately, I wasn’t wise enough to accept the non-success until we’d reached almost a breaking point in the group.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c2.staticflickr.com/4/3633/3339247264_e03fa95e7e_b.jpg" /></entry><entry><title type="html">Planning a Flipped Unit Part 2</title><link href="/nodes/_site/2018/01/planning-a-flipped-unit-part-2.html" rel="alternate" type="text/html" title="Planning a Flipped Unit Part 2" /><published>2018-01-09T09:57:56-05:00</published><updated>2018-01-09T09:57:56-05:00</updated><id>/nodes/_site/2018/01/planning-a-flipped-unit-part-2</id><content type="html" xml:base="/nodes/_site/2018/01/planning-a-flipped-unit-part-2.html">&lt;p&gt;The biggest portion of the circle, the &lt;em&gt;Why&lt;/em&gt;, defines &lt;strong&gt;everything&lt;/strong&gt; you do in the unit. Before planning a single activity (or lesson), it is important to take time to outline what the students will be learning within the unit as a &lt;em&gt;whole&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/why.png&quot; alt=&quot;Large circle with the word &amp;quot;Why&amp;quot; at the top&quot; title=&quot;Defining the Why&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This guiding focus will bring consistency to your individual lessons and empower you to build more meaningful instruction. By outlining the standards, you’ve built a roadmap to help students to go from Point A to Point B in a meaningful - and much more flexible - manner.&lt;/p&gt;
+
+&lt;p&gt;If the standards are defined, where does flexibility come from? Here’s a chemistry standard I taught in Indiana:&lt;/p&gt;
+
+&lt;blockquote&gt;C.1.5 Describe the characteristics of solids, liquids, and gases and changes in state at the
+macroscopic and microscopic levels.&lt;/blockquote&gt;
+
+&lt;p&gt;From a lesson-centric point of view, I can certainly work with this guidance. Maybe we do a lesson looking at solids, liquids, and gasses in the lab to compare and contrast properties. Then we could look at a &lt;a href=&quot;https://phet.colorado.edu&quot;&gt;PhET simulation&lt;/a&gt; and play with particle diagrams. Students would be introduced to the material and hopefully be able to describe properties on their own.&lt;/p&gt;
+
+&lt;p&gt;The problem is that I’m artificially limiting that exposure. I don’t know what questions students will ask leading up to that particular lesson. I’m also not thinking about bigger connections because the point of the &lt;em&gt;lesson&lt;/em&gt; is to teach the single idea.&lt;/p&gt;
+
+&lt;p&gt;By outlining standards rather than lessons when planning a unit, themes begin to emerge. We can move away from teaching standard C.1.4 before we teach C.1.5. More importantly, it gives students a chance to define their own path in describing a particular piece of content. Having options for interaction rather than prescriptions - all within the scope of the outlined standards - gives students more autonomy and choice, which leads to more engagement.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-outlines&quot;&gt;Creating Outlines&lt;/h2&gt;
+
+&lt;p&gt;There is no ‘best’ way to outline standards, but I’ve found it helpful to create simple documents for each unit I’m preparing. This focuses my attention and gives me one place to brainstorm ideas. I’m a paper-and-pencil first kind of thinker, so I have physical templates that I’ll scribble on as I work. It may also be helpful to print standards or write them on post it notes so you can quickly rearrange as you think, especially if you’re working with collaborative content teams.&lt;/p&gt;
+
+&lt;p&gt;If you’re teaching a single course, you really only need two boxes at this point: Standards and Themes.&lt;/p&gt;
+
+&lt;p&gt;Single course:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/single.png&quot; alt=&quot;Chart with a space for &amp;quot;standards&amp;quot; and a space for &amp;quot;themes&amp;quot;&quot; title=&quot;Single class planning&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In collaborative planning sessions, look for common threads and throw anything relevant in. This is the brainstorming phase where ideas have equal vitality and worth. You can go back and refine later. Seeing standards on paper will help you set the big idea for the unit, so start at the highest possible level.&lt;/p&gt;
+
+&lt;p&gt;Multiple courses (cross-curriculuar):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/crosscurricular.png&quot; alt=&quot;Chart with &amp;quot;standards&amp;quot; at the top and different courses listed below to help find alignments&quot; title=&quot;Cross curricular planning template&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can’t begin to design coherent, innovative units unless you know &lt;em&gt;exactly&lt;/em&gt; what you need to teach during that unit.&lt;/p&gt;
+
+&lt;p&gt;I find it’s helpful to verbalize a story. Why is one standard included, but not another? How are they tied together? What significance comes from the addition (or deletion) of one standard over another? If you’re unable to answer these questions or tie together a narrative for the unit, continue to work through standards until you have something you can articulate out loud.&lt;/p&gt;
+
+&lt;h2 id=&quot;looking-for-themes&quot;&gt;Looking for Themes&lt;/h2&gt;
+&lt;p&gt;When your standards are laid out and you can articulate a narrative, it’s easier to see common themes and threads. Try to stay away from restrictive topics like, “the 1920s,” or “cells and organelles” because they frequently limit the scope of thinking about material. What connecting ideas permeate all the standards you want to incorporate into the instruction? Brainstorm ideas. Bounce topics off one another. Keep a journal of interesting ideas to loop into other units or pull back in during a different course or even year.&lt;/p&gt;
+
+&lt;p&gt;Let’s take the chemistry standard again:&lt;/p&gt;
+
+&lt;blockquote&gt;C.1.5 Describe the characteristics of solids, liquids, and gases and changes in state at the
+macroscopic and microscopic levels.&lt;/blockquote&gt;
+
+&lt;p&gt;This used to fall into my “Properties of Matter” unit (real original, I know). Instead of tackling this idea from a narrow materials perspective, it is rolled into a design unit. Why do we use particular materials for different applications? What industries rely on (or manipulate) some of these characteristics?&lt;/p&gt;
+
+&lt;p&gt;By opening up our line of thinking about how to incorporate a standard, our students can now take different paths to showing their understanding through lenses they define. It’s also important to remember that the unit or investigation you design might not fit every student’s interests. Knowing the endgame - seeing the big picture of the &lt;em&gt;Why&lt;/em&gt;, will give you and your students flexibility in exploring different ideas.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-now&quot;&gt;What Now?&lt;/h2&gt;
+&lt;p&gt;The meat of your work is getting standards aligned. Rather than dive into day to day activities (where we’re &lt;em&gt;all&lt;/em&gt; comfortable), map out a sequence of units or even your entire year. If you’re in a district that has a scope and sequence laid out, use that as a starting point.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Standards-alignment helps &lt;em&gt;you&lt;/em&gt; see the big picture&lt;/li&gt;
+  &lt;li&gt;Tell a story with the standards. Think about flow from one idea to another.&lt;/li&gt;
+  &lt;li&gt;Identify potential themes or topics that include - but are not exclusive to - the standards you’ve identified.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Familiarizing yourself with the standards that are taught in each unit will help you open up different avenues for student learning. If you’re struggling to articulate why a particular standard is included, move it! You’re the architect of the course - you have freedom and leeway to design something meaningful for your students&lt;/p&gt;
+
+&lt;p&gt;In the next post, we’ll look at the &lt;em&gt;How&lt;/em&gt; of unit design. How will we assess and evaluate student learning within the context of the &lt;em&gt;Why&lt;/em&gt;?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Featured image: &lt;a href=&quot;https://flickr.com/photos/librariesrock/36956526540&quot; title=&quot;Where am I?&quot;&gt;Where am I?&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/librariesrock&quot;&gt;Carol (vanhookc)&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/&quot;&gt;Creative Commons (BY-SA) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="planning" /><category term="units" /><category term="lesson" /><category term="design" /><category term="framework" /><summary type="html">The biggest portion of the circle, the Why, defines everything you do in the unit. Before planning a single activity (or lesson), it is important to take time to outline what the students will be learning within the unit as a whole.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/5/4406/36956526540_0e7ef2b7ba_c.jpg" /></entry><entry><title type="html">Planning a Flipped Unit</title><link href="/nodes/_site/2018/01/planning-a-flipped-unit-part-1.html" rel="alternate" type="text/html" title="Planning a Flipped Unit" /><published>2018-01-06T00:00:00-05:00</published><updated>2018-01-06T00:00:00-05:00</updated><id>/nodes/_site/2018/01/planning-a-flipped-unit-part-1</id><content type="html" xml:base="/nodes/_site/2018/01/planning-a-flipped-unit-part-1.html">&lt;p&gt;The idea for this series was sparked when I was helping some people research sample flipped lessons for a curriculum workshop I was facilitating. I was embarrassed while working with this teacher because most of what we found was significantly below standard.&lt;/p&gt;
+
+&lt;p&gt;That night, I did some more searching and I leafed through page after page of Google results of substitution-level implementations of flipping. Lessons that came up in the search were roughly:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Video for homework, quiz the next day.&lt;/li&gt;
+  &lt;li&gt;Video for homework, worksheet the next day.&lt;/li&gt;
+  &lt;li&gt;Video for homework, lecture the next day.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;What I could &lt;strong&gt;not&lt;/strong&gt; find were resources on designing effective and powerful lessons for flipping, let alone units.&lt;/p&gt;
+
+&lt;p&gt;This is a problem.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;planning&quot;&gt;Planning&lt;/h2&gt;
+
+&lt;p&gt;In my early years, a unit was simply a sequence of lessons around a central theme. Essential Questions guided my day to day work, but instead of focusing on content standards as a baseline, I relied on thematic relationships. At the time, I thought I was giving myself freedom to explore related ideas no “prescribed in the curriculum.” In reality, I was making more work for myself as I pulled ideas in without a guiding framework. On top of cherry-picking pieces of content within a unit, I was trying to flip everything. That meant making videos and corresponding materials to help my students in their learning. The majority of my work was focused on lesson preparation and the overall unit structure was left to nothing more than the sum of the parts.&lt;/p&gt;
+
+&lt;p&gt;Flipped Learning has been around long enough for most people to have heard about it if not researched it for themselves. Sal Khan’s 2011 TED talk is a firestarter for conversation among teachers and administrators looking for methods to jumpstart some innovation. &lt;a href=&quot;http://www.jonbergmann.com&quot;&gt;Jon Bergmann&lt;/a&gt; and &lt;a href=&quot;http://www.aaronsams.com&quot;&gt;Aaron Sams&lt;/a&gt; have published a number of books about flipping at the classroom level as well as for particular subjects. Others like &lt;a href=&quot;http://flippingwithkirch.blogspot.com/p/pre-order-my-book-today.html&quot;&gt;Crystal Kirch&lt;/a&gt;, &lt;a href=&quot;https://www.amazon.com/Flipping-English-Class-Reach-Learners/dp/0415733154&quot;&gt;Troy Cockrum&lt;/a&gt;, &lt;a href=&quot;http://rtalbert.org/book/&quot;&gt;Robert Talbert&lt;/a&gt;, and &lt;a href=&quot;https://www.amazon.com/Spark-Learning-Embracing-Student-Curiosity-ebook/dp/B07319YS66&quot;&gt;Ramsey Musallam&lt;/a&gt; have written books (all linked) about their implementation strategies teachers can model as they begin to explore.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-gap&quot;&gt;The Gap&lt;/h2&gt;
+
+&lt;p&gt;There is a significant information gap when it comes to learning about how to successfully implement flipped practices. In a culture of Google results and “power skimming,” most implementations begin - and end - with finding or recording lectures that students watch at home and then “apply” in the classroom.&lt;/p&gt;
+
+&lt;p&gt;At it’s worst, the teacher becomes a non-essential mediator of student YouTube binging. At best, the teacher essentially resets the clock on student work, promoting passive listening and devaluing the net positives that can be gained in a classroom setting.&lt;/p&gt;
+
+&lt;p&gt;Sherry Turkle explores the advent of using technology to engage today’s “disengaged” students in her book, &lt;em&gt;Reclaiming Conversation&lt;/em&gt;. Her point is similar - rich classrooms come with discussion and interaction. Savvy and intentional course design is key in promoting this interaction. Flipped Learning can help you build that culture, but only if you’re prepared with the right instructional tools.&lt;/p&gt;
+
+&lt;p&gt;So, our question: When you’re asked to design a lesson, where do you start?&lt;/p&gt;
+
+&lt;p&gt;Like many, you may identify your Big Idea and Essential Question for the day (don’t forget to put them on the board!). Then, you’d outline your instruction and some guided practice strategies after which you can assess student understanding of the material.&lt;/p&gt;
+
+&lt;p&gt;Lessons are easy. As a teacher, you’ve been crafting lessons since your undergrad years. Over time, they may be refined or updated, but planning is typically spent looking at a calendar, outlining day to day activities.&lt;/p&gt;
+
+&lt;p&gt;When you design from the top - starting with the biggest ideas and burrowing down through assessment and lessons - you are rooted in the main ideas. Those themes permeate everything your students do, which leads to more opportunities for exploration and discussions on related topics. You won’t need to think about every contingency to engage students when they lose interest because students will define those topics themselves.&lt;/p&gt;
+
+&lt;h2 id=&quot;bubbles&quot;&gt;Bubbles&lt;/h2&gt;
+&lt;p&gt;Our worldview informs everything we do in the classroom. “The medium is the message,” the adage goes, and it’s particularly important to remember as you begin to incorporate video (or other media) into your instructional habits. The idea of an asynchronous introductory event is not a common experience for most of our students. How will it communicate a shift in the typical learning cycle?&lt;/p&gt;
+
+&lt;p&gt;Our bubbles are strong. Our brains work hard to fit new experiences into existing schemas. When they don’t fit, the schema is broken down and rebuilt. Working in a flipped environment will certainly break your students schemas about learning. If your schema for instruction isn’t being broken and rebuilt as part of the process, your wheels will spin.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-big-picture&quot;&gt;The Big Picture&lt;/h2&gt;
+&lt;p&gt;To address the shortcomings of planning effectively for flipped material, we’ll be using a modified version Simon Sinek’s “Golden Circle” to plan out a holistic unit from the top down. If you’re not familiar with the Golden Circle, here’s a diagram:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/nodes/_site/assets/img/goldencircle.png&quot; alt=&quot;The golden circle - What, how, why&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Golden Circle is meant to help organizations determine their core mission. In many cases, employees (or teachers and students) can quickly answer What it is they do every day. For example, a Microsoft employee would say they make software. A student would say they’re learning about the Revolutionary War or linear equations.&lt;/p&gt;
+
+&lt;p&gt;Most people, however, can’t answer the “Why” nearly as easily.  &lt;em&gt;Why&lt;/em&gt; does Microsoft make software? &lt;em&gt;Why&lt;/em&gt; are linear equations taught in school? Sinek’s argument for the corporate world is that by answering the Why for your clients, you stand out - you become unique and a cohesive and productive culture develops.&lt;/p&gt;
+
+&lt;p&gt;Schools are not businesses, but the principles of the Golden Circle can be applied to curriculum development. How do we transfer corporate descriptors to the classroom?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;WHY&lt;/strong&gt;: Standards, essential questions, outcomes.
+    &lt;ul&gt;
+      &lt;li&gt;Defining the Why in your curriculum is step one. It sets the tone for the entire course, defining the end results for students. Knowing which standards, essential questions, and outcomes you have for student at any given point keeps your instruction on focus as you plan. Looking unit by unit helps you tell a story to your students - it provides a cohesive overview of how things relate to one another.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;HOW&lt;/strong&gt;: Assessment(s)/capstone event
+    &lt;ul&gt;
+      &lt;li&gt;Once you know why you’re teaching what you’re teaching, you need to define how you’ll know what students have learned or not learned. Step two in Understanding by Design calls this “Assessment Evidence.” What tasks will students complete in order to show what they’ve learned as you move through the unit? Keep in mind that this does &lt;strong&gt;not&lt;/strong&gt; necessarily have to be a written test!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;What&lt;/strong&gt;: Lessons, day to day
+    &lt;ul&gt;
+      &lt;li&gt;You’ve defined the Why and you know How you’ll be evaluating student growth, &lt;em&gt;now&lt;/em&gt; you can start to think about the day to day work. Every single thing you plan for your students should support their growth toward showing what they know (the &lt;em&gt;Why&lt;/em&gt;) and &lt;em&gt;How&lt;/em&gt; you know they know it.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In our application, we’re going to put the Why at the outside, exchanging it for the What:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/nodes/_site/assets/img/modcircle.png&quot; alt=&quot;Modified Golden Circle - Why, How, What&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This Golden Circle  hangs on a wall near my desk. It’s a visual reminder as I work with teachers to build units of instruction. Everything defined in the unit is nested and related: all of the What is measured and related to the defined Why. The idea is to root our planning in practices which focus on teaching standards with authentic and meaningful opportunities for assessment.&lt;/p&gt;
+
+&lt;p&gt;Admittedly, the visual analogy isn’t perfect because usually, when a dartboard is involved, you’re shooting for the bullseye. We need to get to the &lt;strong&gt;what&lt;/strong&gt; eventually, but it’s always within the context of what’s &lt;em&gt;around&lt;/em&gt; it, the standards and assessments.&lt;/p&gt;
+
+&lt;p&gt;Each post in this series will dive deeper into designing &lt;em&gt;units&lt;/em&gt; of instruction rather than flipped lessons. Comments, suggestions, and feedback are always appreciated.&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="planning" /><category term="instruction" /><category term="lessons" /><category term="framework" /><summary type="html">The idea for this series was sparked when I was helping some people research sample flipped lessons for a curriculum workshop I was facilitating. I was embarrassed while working with this teacher because most of what we found was significantly below standard.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/9/8579/15899932525_cce383f209_b.jpg" /></entry><entry><title type="html">Moving from WordPress to Jekyll</title><link href="/nodes/_site/2018/01/move-wordpress-to-jekyll-complete-guide.html" rel="alternate" type="text/html" title="Moving from WordPress to Jekyll" /><published>2018-01-01T00:00:00-05:00</published><updated>2018-01-01T00:00:00-05:00</updated><id>/nodes/_site/2018/01/move-wordpress-to-jekyll-complete-guide</id><content type="html" xml:base="/nodes/_site/2018/01/move-wordpress-to-jekyll-complete-guide.html">&lt;p&gt;&lt;em&gt;This is a long post in several parts. Jump to different sections using the links below.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#intro&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#export&quot;&gt;Exporting WordPress&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hosting&quot;&gt;Hosting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#comment-system&quot;&gt;Comments&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#updating&quot;&gt;Updating&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Long story short, I moved from self-hosted WordPress to a static HTML site generated by Jekyll.&lt;/p&gt;
+
+&lt;p&gt;WordPress does it’s job &lt;em&gt;really well.&lt;/em&gt; I think there was some statistic &lt;em&gt;[citation needed]&lt;/em&gt; that showed nearly 30% of the Internet runs on WordPress in one form or another. That’s a lot of the Internet.&lt;/p&gt;
+
+&lt;p&gt;But, because of ubiquity, there is a significant drawback: WordPress sites are prime targets for malicious code and hacking. A plugin on my site shows how many dozens (and sometimes hundreds!) of login attempts there have been. It’s a battle to make sure security plugins are always up to date. That leads to other issues: incompatibility with plugins.&lt;/p&gt;
+
+&lt;p&gt;So, This entire blog - 2018 all the way back to 2010 - is a set of static HTML pages generated by Jekyll on my &lt;a href=&quot;https://reclaimhosting.com&quot;&gt;Reclaim Hosting&lt;/a&gt; server. No more logins, no more plugins to check and update. Just nice, clean, lightweight HTML.&lt;/p&gt;
+
+&lt;p&gt;It took me several weeks to work out the details for the migration. It wasn’t too bad, but I learned some things along the way that I’d like to share here.&lt;/p&gt;
+
+&lt;h2 id=&quot;export&quot;&gt;Exporting WordPress&lt;/h2&gt;
+
+&lt;p&gt;Jekyll uses Markdown and YAML data to generate a website. It’s quite clever how they pulled it all together, actually, to mimic a typical dynamic (database-driven) blog like WordPress. &lt;a href=&quot;https://wordpress.org/plugins/jekyll-exporter/&quot;&gt;There is a plugin&lt;/a&gt; which will export your WordPress blog formatted for Jekyll, &lt;em&gt;including&lt;/em&gt; all post metadata like tags, permalinks, and image resources. It gives you a .zip file which you can then extract and use to populate your new Jekyll site.&lt;/p&gt;
+
+&lt;p&gt;First, it extracts your &lt;em&gt;entire&lt;/em&gt; media library. WordPress automatically generates several files for each image you’ve uploaded for different display situations. My media folder was well over 300 MB because I didn’t take the time to clean the library up. I’d suggest cleaning up any unused image files before the export.&lt;/p&gt;
+
+&lt;p&gt;Second, any pages you have on your site (not blog posts) get their own folder. Take time to go through each folder and make sure it’ll fit the Jekyll file structure.&lt;/p&gt;
+
+&lt;p&gt;Finally, do a regular WordPress XML export so you have an entire backup of your blog. The Jekyll plugin only converts posts and pages. If you have other resources, you’ll want to save them somewhere before deleting or redirecting your site.&lt;/p&gt;
+
+&lt;h2 id=&quot;hosting&quot;&gt;Hosting&lt;/h2&gt;
+
+&lt;p&gt;The great thing about Jekyll is that it is ready to go with GitHub Pages. If you’re already using GitHub, you can go that route with your &lt;em&gt;username.github.io&lt;/em&gt; account with a single commit and push. I have a lot of traffic (humblebrag much?) to &lt;a href=&quot;https://blog.ohheybrian.com&quot;&gt;blog.ohheybrian.com&lt;/a&gt; already and I don’t want to set up a redirect. I’m also already using my GitHub Pages site for my (web apps)[https://dev.ohheybrian.com]. You can map a custom domain to GitHub Pages, but &lt;em&gt;you cannot use HTTPS on that domain&lt;/em&gt;, which was a dealbreaker for me.&lt;/p&gt;
+
+&lt;p&gt;Each web host is different, so you need to see if yours supports Ruby 2.4 or higher. Lucky for me, Tim Ownes from &lt;a href=&quot;https://reclaimhosting.com&quot;&gt;Reclaim Hosting&lt;/a&gt; already had &lt;a href=&quot;https://blog.timowens.io/running-a-jekyll-site-on-reclaim-hosting/&quot;&gt;a blog post&lt;/a&gt; on setting it up with my Reclaim account. I followed his instructions to the letter and got it working on the second try (I borked some theme and file structures on the first, so I deleted everyting and started over).&lt;/p&gt;
+
+&lt;p&gt;SSL is a big deal. If you don’t know what it is, read &lt;a href=&quot;https://www.troyhunt.com/the-6-step-happy-path-to-https/&quot;&gt;The Six Step “Happy Path” to SSL&lt;/a&gt; by Troy Hunt (or anything else he writes, honestly).&lt;/p&gt;
+
+&lt;h2 id=&quot;comment-system&quot;&gt;Comments&lt;/h2&gt;
+
+&lt;p&gt;I don’t get a &lt;em&gt;ton&lt;/em&gt; of comments, but with a static HTML site, there isn’t an easy way to include comments. If you’re hosting with Github Pages, &lt;a href=&quot;https://staticman.net/&quot;&gt;Staticman&lt;/a&gt; is an &lt;em&gt;awesome&lt;/em&gt; and secure way to include comments on your posts. Another option would be to use a third-party tool like Disqus. I didn’t go with Disqus because they’ve had some trouble with clean use of user data in the past.&lt;/p&gt;
+
+&lt;p&gt;I decided to create a custom commenting form (based on &lt;a href=&quot;https://css-tricks.com/building-a-jekyll-site-part-3-of-3/&quot;&gt;this post&lt;/a&gt;) using &lt;a href=&quot;https://www.firebase.com&quot;&gt;Firebase&lt;/a&gt;. It’s a real-time database run by Google which can push information anywhere I want it to go. Each post has a query to the database to check for comments. Pushing the comments to the database is handled with a little bit of JavaScript, which I’ve modified from the linked tutorial:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/bennettscience/79fe1b569c4b0f6f14eb390240518aeb.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Firebase also includes cloud functions that can be written in Node JS. I’ve never written any applications in Node, so this was a learning experience for me. This function watches the comment database and simply notifies me if a change has been made using the following script:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/bennettscience/cce8ca3906f2e2682bb8b31e32afb2f1.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;It could definitely use some refinement, but it does what I need it to do.&lt;/p&gt;
+
+&lt;h2 id=&quot;updating&quot;&gt;Updating&lt;/h2&gt;
+
+&lt;p&gt;Relying on an Internet connection to write a blog post seems so 2012. With Jekyll, I can write in any text editor and then upload when it’s ready. If I’m on my main machine, I can even serve the page locally to see what the update will look like as if it were live on the web. It’s a small perk, but as I’ve moved to working more and more with text files (rather than things like Google docs) it’s nice to be able to open a blank text file and start writing. I can come back whenever I want and finish up or let it sit on the large pile of started-and-never-finished posts.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;In the end, this is a highly technical shift away from something built for the end user into something I have &lt;em&gt;absolute control&lt;/em&gt; over. If the blog breaks, it’s my fault and I will have to work to fix it, which is satisfying in its own nerdy way. It’s definitely not the easiest route to start (or continue) blogging, but it’s mine, which is fulfilling.&lt;/p&gt;
+
+&lt;p&gt;If you’d like to know more about how to make a switch, feel free to try out that nifty commenting section below or just write me an email: &lt;a href=&quot;mailto:brian@ohheybrian.com&quot;&gt;brian [at] ohheybrian [dot] com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;–&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Featured image is &lt;a href=&quot;https://flickr.com/photos/maxschiffer/38579893751&quot; title=&quot;Find your way&quot;&gt;Find your way&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/maxschiffer&quot;&gt;maximilianschiffer&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nd/2.0/&quot;&gt;Creative Commons (BY-ND) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="Code" /><category term="wordpress" /><category term="jekyll" /><category term="blogging" /><category term="how-to" /><summary type="html">This is a long post in several parts. Jump to different sections using the links below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/5/4562/38579893751_b3b89701b7_c.jpg" /></entry><entry><title type="html">New Tab Flickr Background Extension</title><link href="/nodes/_site/2017/12/new-tab-flickr-background-extension/" rel="alternate" type="text/html" title="New Tab Flickr Background Extension" /><published>2017-12-19T07:09:51-05:00</published><updated>2017-12-19T07:09:51-05:00</updated><id>/nodes/_site/2017/12/new-tab-flickr-background-extension</id><content type="html" xml:base="/nodes/_site/2017/12/new-tab-flickr-background-extension/">&lt;p&gt;I’m part of digital-only secret Santa exchange. It’s a cool idea…you’re assigned someone you may (or may not know) and tasked with coming up with a free (or very cheap, ~$5) digital gift. Some ideas were things like creating customized Spotify playlists or blog lists, creative portraits of the person from images you find online, to recipe or book suggestions.&lt;/p&gt;
+
+&lt;p&gt;After snooping out my person, I found that they really like being outside, but they’re a programmer by day. So, I decided to throw together a little Chrome/Firefox extension which replaces their new tab page with a randomly-found picture from Flickr.&lt;/p&gt;
+
+&lt;p&gt;Originally, I hardcoded tags that would always return an image of a forest. I decided that wasn’t much fun. What if they wanted to look at a beach that day?&lt;/p&gt;
+
+&lt;p&gt;So, I tapped into Chrome and Firefox local storage. You can input some tags (comma separated) into a simple form and hey presto! The image changes. It will use those tags with each new tab load until you change the tags.&lt;/p&gt;
+
+&lt;video style=&quot;width:100%; height:auto&quot; autoplay=&quot;&quot; muted=&quot;&quot; loop=&quot;&quot;&gt;&lt;source src=&quot;https://blog.ohheybrian.com/wp-content/uploads/2017/12/2017-12-19_12-05-25.mp4&quot; type=&quot;video/mp4&quot; /&gt;&lt;/video&gt;
+
+&lt;p&gt;I’m pulling the large image (1600px on the longest side) and every now and then an image fails to load. I don’t know of a good way to preprocess for missing image URLs yet. Plus, I did this in a two-day blitz. In good fashion, each photo is linked to the original file in Flickr at the bottom of the screen so you can go and give it a fav if you’re a Flickr user.&lt;/p&gt;
+
+&lt;p&gt;If you want to try it out you can &lt;a href=&quot;https://ohheybrian.com/media/newTab.zip&quot;&gt;download this zip holding both extension files&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;to-install&quot;&gt;To Install&lt;/h2&gt;
+
+&lt;h3 id=&quot;chrome&quot;&gt;Chrome&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;chrome:extensions&lt;/code&gt; in the address bar.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make sure the “Developer Mode” checkbox is selected.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click on “Load unpacked extension” and select the folder you downloaded.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Enable it and then open a new tab. You’ll need to set the tags the first time.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;firefox&quot;&gt;Firefox&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;about:addons&lt;/code&gt; in the address bar.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click on the gear icon (top right) and select “Install Add-On From File…”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select the &lt;code class=&quot;highlighter-rouge&quot;&gt;.xpi&lt;/code&gt; file from your download and enable it in the popup.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Open a new tab and set your keywords.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;—&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Featured image is a screenshot of the extension which is showing &lt;a href=&quot;https://flickr.com/photos/156723268@N03/25293758428 &amp;#8220;Crowded summer beach. High angle view&amp;#8221;&quot;&gt;Crowded summer beach. High angle view&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/156723268@N03&quot;&gt;slon.pics&lt;/a&gt; shared into the public domain using &lt;a href=&quot;https://creativecommons.org/publicdomain/zero/1.0/&quot;&gt;Creative Commons Public Domain Dedication (CC0)&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><summary type="html">I’m part of digital-only secret Santa exchange. It’s a cool idea…you’re assigned someone you may (or may not know) and tasked with coming up with a free (or very cheap, ~$5) digital gift. Some ideas were things like creating customized Spotify playlists or blog lists, creative portraits of the person from images you find online, to recipe or book suggestions.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/nodes/_site/assets/img/wp-content/uploads/2017/12/2017-12-19_12-07-44.png" /></entry><entry><title type="html">Slide Tweeter Update 4</title><link href="/nodes/_site/2017/12/slide-tweeter-update-4/" rel="alternate" type="text/html" title="Slide Tweeter Update 4" /><published>2017-12-09T09:19:57-05:00</published><updated>2017-12-09T09:19:57-05:00</updated><id>/nodes/_site/2017/12/slide-tweeter-update-4</id><content type="html" xml:base="/nodes/_site/2017/12/slide-tweeter-update-4/">&lt;p&gt;I thought I was ready for some beta testing of the Slide Tweeter AddOn. Unfortunately, I’ve run into a snag with authenticating some of the code.&lt;/p&gt;
+
+&lt;p&gt;When you install and Addon from Google, it’s in something called &lt;code class=&quot;highlighter-rouge&quot;&gt;AuthMode.NONE&lt;/code&gt; which significantly limits access to certain data. This is a good thing because you don’t want Addons running through your account changing things the minute you install it. Anyways, once it’s installed, you can then prompt the user to enable the Addon, which gives it access to all the necessary permissions.&lt;/p&gt;
+
+&lt;p&gt;I’m working on moving permissions around so it installs and adds a menu successfully &lt;em&gt;before&lt;/em&gt; activating the Addon. It’s turning into more of a trick than I thought it would.&lt;/p&gt;
+
+&lt;p&gt;More updates to come…&lt;/p&gt;</content><author><name>Brian Bennett</name></author><summary type="html">I thought I was ready for some beta testing of the Slide Tweeter AddOn. Unfortunately, I’ve run into a snag with authenticating some of the code.</summary></entry></feed>

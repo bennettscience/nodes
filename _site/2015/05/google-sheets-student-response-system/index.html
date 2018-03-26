@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Google Sheets Student Response System | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  Google Sheets Student Response System
+</h1>
+
+
+
+<p>Part two of a <a href="http://blog.ohheybrian.com/text-messages-google-form-responses/">post from the other day</a>.</p>
+
+<p>First, head over to the master spreadsheet and <a href="https://docs.google.com/spreadsheets/d/1TNAex2Mo9-VfXe6RNhBT8NqPT9m0CbN9bvHbz-zDBJg/edit?usp=sharing" target="blank">make a copy</a>.</p>
+
+<hr />
+
+<h3 id="what-now">What Now?</h3>
+
+<p>It’s important to note that this works just fine with form responses – you don’t have to use the text input <a href="http://blog.ohheybrian.com/text-messages-google-form-responses/">I wrote about earlier</a>. You can always go back and add it later. Either way you collect information, we can begin analyzing some of the data.</p>
+
+<p>The whole idea is to have a platform-independent polling system. So, this is built with flexibility and bare-bones functionality in mind. It isn’t complex in the way it pulls in student responses, nor is it meant to be. However, there are some tools in place to help you actively identify problem areas.</p>
+
+<h3 id="setup">Setup</h3>
+
+<p>An idea I’m borrowing from <a href="http://www.twitter.com/mrschwen">Andy Schwen</a> is to utilize a central class list. Create a new spreadsheet and fill in student names. I sort mine by last name, first initial. You need the <strong>spreadsheet key</strong> from this document.</p>
+
+<div id="wp-gistpenfile-spreadsheet-key">
+  <h3 class="wp-gistpenfile-title">
+    spreadsheet-key
+  </h3>
+  
+  <pre class="gistpen line-numbers"><code class="language-plaintext">https://docs.google.com/spreadsheets/d/RANDOM-LETTERS-AND-NUMBERS/edit#gid=0</code></pre>
+</div>
+
+<p>Copy the key and paste it into the cell which asks for it.</p>
+
+<p><img src="http://blog.ohheybrian.com/wp-content/uploads/2015/05/setup.gif" alt="setup" width="606" height="202" class="aligncenter size-full wp-image-3869" /></p>
+
+<p>Your class list will automatically populate for you. That’s all you need to do on this page.</p>
+
+<h3 id="responses">Responses</h3>
+
+<p>The Responses tab is meant to be an overview for you. So, if you have a way to extend your desktop across the projector rather than duplicating, you’ll have the back-door information.</p>
+
+<p>This page has a response vs. confidence graph that updates as students submit their answers. If you have your class list set (<a href="#setup">see above</a>), you’ll also be able to sort by class period using the dropdown menu. This will import those students and assign an ID number. Students respond with that ID number rather than their name so you can display comments (read on).</p>
+
+<p>If they make a comment, you can also read it and see who asked that particular question or submitted a particularly salty comment.</p>
+
+<p>Finally, you are given an overall confidence (average of all answers) as well as a chart mapping the student’s confidence score for each item they choose. It’s also broken down by student to aid you in feedback and conversation setting. You could also use this for grouping students on the fly to discuss the question.</p>
+
+<div id="attachment_3873" style="max-width: 650px" class="wp-caption aligncenter">
+  <a href="http://blog.ohheybrian.com/wp-content/uploads/2015/05/responses11.png"><img src="http://blog.ohheybrian.com/wp-content/uploads/2015/05/responses11-1024x624.png" alt="Click for full-size image." width="640" height="390" class="size-large wp-image-3873" srcset="https://blog.ohheybrian.com/wp-content/uploads/2015/05/responses11-1024x624.png 1024w, https://blog.ohheybrian.com/wp-content/uploads/2015/05/responses11-300x183.png 300w, https://blog.ohheybrian.com/wp-content/uploads/2015/05/responses11.png 1219w" sizes="(max-width: 640px) 100vw, 640px" /></a>
+  
+  <p class="wp-caption-text">
+    Click for full-size image.
+  </p>
+</div>
+
+<h3 id="results">Results</h3>
+
+<p><a href="http://blog.ohheybrian.com/wp-content/uploads/2015/05/idSubmit.gif"><img src="http://blog.ohheybrian.com/wp-content/uploads/2015/05/idSubmit.gif" alt="idSubmit" width="702" height="192" class="aligncenter size-full wp-image-3875" /></a></p>
+
+<p>This is the page you want to show live to students, and it’s meant to go through three steps. At first, the ID boxes at the top are all red. As responses come in, the box will turn green. There isn’t any way to prevent someone from submitting the incorrect ID number or a duplicate, so duplicates will turn yellow. You can then follow up individually as needed.</p>
+
+<p>When you click on the “Get Responses” button, a pie graph of all the submitted answers is displayed. This is meant to spur conversation and show the beginnings of a pattern.</p>
+
+<p><img src="http://blog.ohheybrian.com/wp-content/uploads/2015/05/results11.gif" alt="results1" width="1114" height="548" class="aligncenter size-full wp-image-3879" /></p>
+
+<p>Clicking on “Set Answer” allows you to submit the multiple choice answer and change the graph. Rather than the pie chart, it shows the confidence score and the number of each answer submitted. Again, this can lead to conversations with your class about how confidence can correlate with making the right selection.</p>
+
+<p><img src="http://blog.ohheybrian.com/wp-content/uploads/2015/05/results2.gif" alt="results2" width="1118" height="584" class="aligncenter size-full wp-image-3881" /></p>
+
+<p>Clicking “Reset Form” clears <strong>all</strong> the responses from the form, resets the charts, and clears the Responses tab of data so you can ask another question.</p>
+
+<hr />
+
+<p>This isn’t meant to collect persistent data – it’s meant for flexibility and high-level insight. Hopefully, it’s helpful to you. Please leave comments on this post (also linked from the template) with bugs, functionality improvement requests, or other feedback. This is definitely a pet project, but I’ll try my best to maintain it as it gets used.</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  May
+  12th,
+  2015
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#All">All</a>
+ &nbsp;
+ 
+  <a href="/categories/#Technology">Technology</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Google Sheets Student Response System&amp;url=https://blog.ohheybrian.com/2015/05/google-sheets-student-response-system/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2015/05/google-sheets-student-response-system/&amp;title=Google Sheets Student Response System" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2015/05/google-sheets-student-response-system/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

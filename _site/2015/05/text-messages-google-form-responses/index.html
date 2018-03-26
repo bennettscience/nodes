@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      How To Get Text Messages into Google Form Responses | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  How To Get Text Messages into Google Form Responses
+</h1>
+
+
+
+<p>Continuing on my data collection and analysis streak, I’ve got a little project to throw out into the wild and see what happens.</p>
+
+<p>Student response systems are expensive and can be clunky. Google Forms are taking over the role of the stand-alone response system because of their flexibility in the wild during collection (device agnostic) and during analysis.</p>
+
+<p>I like using forms, but they don’t work so well when students don’t have access to an Internet-ready device. So, I came up with a way to allow students (or anyone, really) to respond to a poll using either a form input <strong>or</strong> a text message.</p>
+
+<hr />
+
+<p>The challenging part of this is getting the message <em>into</em> the spreadsheet. I have a Google Voice number, so I looked into Apps Scripts for Voice. Unfortunately, there is no way to access Voice using Google Scripts. There is an API for Hangouts, but it’s not documented very well and doesn’t look like it would even work with Apps Scripts or Spreadsheets. Maybe I’ll head back down that road someday, but not right now.</p>
+
+<p>I decided to go with <a href="http://www.ifttt.com">IFTTT</a>, which has some benefits (easy to set up and manage) and drawbacks (only checks every 15 minutes-ish, so you need to manually run it during a session). It’s clunky and adds a breakpoint in the flow, but it works.</p>
+
+<h3 id="the-setup">The Setup</h3>
+
+<p>You need to start by making a Google Form. For this, I want to allow students to send in four things: Their name, a multiple choice answer, a confidence rating, and any comments. Create the form with your collection in mind.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>In IFTTT, you have to tell the script which cells to populate in the sheet with three straight bars, “</td>
+      <td> </td>
+      <td> </td>
+      <td>”. Knowing your form setup is really important before you make the IFTTT recipe because it’ll save you a headache later. <a href="https://ifttt.com/recipes/285339-sms-to-google-sheet">My recipe</a> puts the responses into the first three columns and then I use a Google Apps Script to break them into the correct columns.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="the-flow">The Flow</h3>
+
+<p><strong>Method 1 – Pure Google Forms</strong></p>
+
+<p>The audience opens the Form and answers the question displayed live. They hit submit.</p>
+
+<p>Easy.</p>
+
+<p><strong>Method 2 – Text Message to IFTTT</strong></p>
+
+<p>First, in Voice, you set up email notifications for text messages. Then, in Gmail, set up a filter to catch the emails and do two things: add a label (I used “text”) and then mark it as “read” (mostly for your inbox-zero sanity). Now, have the audience send a text to your Google Voice number (see below for formatting).</p>
+
+<p>In IFTTT, set up a trigger which uses Gmail -&gt; Google Drive. The Gmail trigger should do a search for your new Gmail label. When it finds that email, it appends a row to your form input spreadsheet.</p>
+
+<p><img src="http://blog.ohheybrian.com/wp-content/uploads/2015/04/2015-04-30_21-38-48.png" alt="2015-04-30_21-38-48" width="640" height="480" class="aligncenter size-full wp-image-3844" srcset="https://blog.ohheybrian.com/wp-content/uploads/2015/04/2015-04-30_21-38-48.png 640w, https://blog.ohheybrian.com/wp-content/uploads/2015/04/2015-04-30_21-38-48-300x225.png 300w" sizes="(max-width: 640px) 100vw, 640px" /></p>
+
+<p>More complicated, but now we have a way to get raw text data into the spreadsheet. Now, you need to make sure the text message is formatted correctly.</p>
+
+<h3 id="splitting-the-text">Splitting the text</h3>
+
+<p>Google forms split fields into their own columns. You can’t do that with a text because IFTTT puts the whole message into one cell. To split it, you need a way for a script to find the individual components. For this, I have participants do the following:</p>
+
+<blockquote class="pullquote">
+  <p>
+    Name [comma] MC answer [comma] Confidence (1-4) [comma] comments
+  </p>
+</blockquote>
+
+<p>IFTTT dumps this into a placeholder cell in the spreadsheet and it can now be broken up at each comma using the following script:</p>
+
+<div id="wp-gistpenfile-splitsms">
+  <h3 class="wp-gistpenfile-title">
+    splitsms
+  </h3>
+  
+  <pre class="gistpen line-numbers"><code class="language-javascript">function splitCells(from) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+  var colC = sheet.getRange(2, 3, sheet.getLastRow()).getValues();  // C2:C, only non-blank rows
+  //Logger.log(colC);
+  for(var i=0; i&lt; colC.length; i++){
+    if(colC[i][0] != ''){
+      // If we received a SMS response, set a formula to parse it
+      sheet.getRange(2+i,4).setValue('=if(istext(C2:C),split(C2:C,",",true),"")')
+    }
+  }
+}</code></pre>
+</div>
+
+<p>After running this script, you now have all the responses in the correct column and you can play with the data more and look for patterns in the responses.</p>
+
+<ul>
+  <li>
+    <ul>
+      <li>*So, there’s the start of the idea. I have a second sheet going, but I’ll write that up in a subsequent post. If you’d like to try this yourself and you’re having trouble reading my rambles, here’s the tl;dr version:&lt;/p&gt;</li>
+    </ul>
+
+    <ol>
+      <li>Get a Google Voice number.</li>
+      <li>Turn on email notices when you receive a text message.</li>
+      <li>In Gmail, set a filter for your email notifications.</li>
+      <li>Sign into <a href="http://www.ifttt.com">IFTTT</a> and copy <a href="https://ifttt.com/recipes/285339-sms-to-google-sheet">this recipe</a>.</li>
+      <li>In the spreadsheet, copy and paste the Google Apps Script above, which splits the text message rows into columns, into the script editor. You may need to refresh the sheet to have the menu added to run the script.</li>
+    </ol>
+  </li>
+</ul>
+
+<p>I’ll follow this up with the data analysis sheet explanation.</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  May
+  1st
+    ,
+  2015
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#All">All</a>
+ &nbsp;
+ 
+  <a href="/categories/#Creative">Creative</a>
+ &nbsp;
+ 
+  <a href="/categories/#How To">How To</a>
+ &nbsp;
+ 
+  <a href="/categories/#Technology">Technology</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=How To Get Text Messages into Google Form Responses&amp;url=https://blog.ohheybrian.com/2015/05/text-messages-google-form-responses/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2015/05/text-messages-google-form-responses/&amp;title=How To Get Text Messages into Google Form Responses" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2015/05/text-messages-google-form-responses/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

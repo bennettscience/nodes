@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Goolge Apps Script Knowledgebase Suite | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  Goolge Apps Script Knowledgebase Suite
+</h1>
+
+
+  <div class="bgimg" style="background-image:url('https://c1.staticflickr.com/5/4234/35591920971_ccfb2a05ac_b.jpg'); background-size:cover; background-repeat:no-repeat; background-position: center center"></div>
+
+
+<p>This is another entry into the “fun, but probably not feasible” folder.</p>
+
+<p>A colleague and I have been trying to show the importance of getting a knowledgebase set up for our teachers. It’s been a back-burner issue for a long time because:</p>
+
+<ul>
+  <li>we’ve never had one, so there isn’t really a pain point, and,</li>
+  <li>we’re trying to roll out 3,500 iPads to 9-12th grades and there are some small projects to get done with that process.</li>
+</ul>
+
+<p>There’s a little bit of hyperbole there, but in essence, it would be nice, but not now.</p>
+
+<p>Google released Hangouts Chat for GSuite users. The main reason was to compete with enterprise chat apps like Slack (but you won’t hear Google saying that directly). Hangouts Chat allows you to set up discussions with teams that are threaded based on rooms. They’ve also added an automation API so users can find, or write, bots to discussions. I got Chat turned on for our domain just to see what it was like. I was able to use <a href="https://codelabs.developers.google.com/codelabs/chatbase/index.html#0">Google’s code lab guide</a> to get a simple bot up and running. It pulled open tasks for a user from our project management suite and I was able to use existing code to get the data into the bot. In all, it took me about two hours to have a working prototype.</p>
+
+<p>I decided to build a helpdesk chat bot which could pull answers to common technical problems our teachers face. That ballooned into a web app to pair with the bot because…why not.</p>
+
+<h2 id="apps-script-knowledgebase">Apps Script Knowledgebase</h2>
+
+<p>I’ll go through some of the code, <a href="https://github.com/bennettscience/apps-script-knowledgebase">but all of it is on GitHub</a>. It’s written in Apps Script because again, a lot of the code was preexisting so I didn’t have to start from scratch. Most of it is modified from standalone functions I have running in separate functions on other sheets. The real challenge in this task was to wrangle the user input into something usable by the script.</p>
+
+<h2 id="the-database">The database</h2>
+
+<p>First things first - we needed a database. I threw together a spreadsheet with several data fields that hold different types of information. I started with our platforms as a high level filter and then added some tags. The user can search for all platform-related entries or narrow them down with keyword tags.</p>
+
+<p><a href="/assets/img/dbss.jpg"><img src="/assets/img/dbss.jpg" alt="Screenshot of the database sheet" /></a>
+<em>click for a larger view</em></p>
+
+<p>There are two additional sheets to the template: one to authenticate users and one to build a list of district platforms. Authenticated users have a button to add new articles into the database from the web app (see below). Editing a <em>really</em> big spreadsheet, especially when typing multi-line, HTML formatted entries, gets really cumbersome, so I wanted a way to do that through the website. Additionally, standardizing the platform options helps the user narrow searches right from the start so they can find information quickly.</p>
+
+<h2 id="the-bot">The bot</h2>
+
+<p><a href="https://codelabs.developers.google.com/codelabs/chat-apps-script/#0">Setting up the bot is covered by Google’s Code Lab</a>, so I’m not going into detail here. The main piece of the bot is that it listens for a mention by a user, finds the information, and returns a card-formatted response.</p>
+
+<p><img src="/assets/img/videocard.jpg" alt="Screenshot of a card returned to a user's question" /></p>
+
+<p>Our thinking for this app is that someone wants a quick video on how to do something, so only videos are returned. The main challenge is getting meaningful information from the user mention in order to match database entries.</p>
+
+<script src="https://gist.github.com/bennettscience/798cf726cd73eca206e9a45a09693ad1.js"></script>
+
+<p>The regular expression looks for any of the keywords mentioned by the user in a string. This was easier than trying to match array values and provides consistent results. Right now, a user can send simple requests like “Google” or “Canvas” to get general results. They can also include some refining search terms, like “Google gmail” or “Canvas assignment” to narrow searches down. If there are no videos that match the search, they’re pushed over to the web app which has articles that do not include video results. More work could be done to refine how the script processes user input to improve the experience.</p>
+
+<p>The script takes the string an creates a regular expression which is then used to match a string built from columns one and two of the spreadsheet. If a result is matched, the YouTube URL is returned in an array.</p>
+
+<p>Once the YouTube videos are grabbed from the sheet, they’re broken into video ID strings and put through the YouTube API to get the video title and thumbnail. The bot builds a card to return to the user with suggested videos. If there aren’t any videos available, the user is given a link to the web app where they can find written articles on their topic.</p>
+
+<h2 id="the-web-app">The web app</h2>
+
+<p>We also threw together a web app to display information that <em>isn’t</em> in video form. The idea being that these are longer articles that have step-by-step instructions and are meant to be used in conjunction with the chat application. Lookup can be done by either passing query parameters in the URL to the app or using the sidebar form to search for keywords within a given topic.</p>
+
+<p><a href="/assets/img/webapp.jpg"><img src="/assets/img/webapp.jpg" alt="Web app view of the knowledgebase" /></a>
+<em>click for a larger view</em></p>
+
+<p>Web apps also allow you to append queries to the published URL out of the box. If a query string is included, the app creates an object that can be passed through your script functions to build a display from a template dynamically. For instance, navigating to</p>
+
+<p><code class="highlighter-rouge">https://script.google.com/.../exec?platform=ios&amp;tags=airplay</code></p>
+
+<p>takes you to this:</p>
+
+<p><a href="/assets/img/webapp2.jpg"><img src="/assets/img/webapp2.jpg" alt="Web app loaded from a URL parameter string" /></a>
+<em>click for a larger view</em></p>
+
+<p>When a video isn’t returned, we’ll pass back the user string to jump right to relevant answers.</p>
+
+<h2 id="challenges">Challenges</h2>
+
+<p>Writing logic to manipulate and understand user input that can vary wildly is very difficult. I’m relying on simple prompts (platform + search keys) to help return a video on <em>every</em> search. As the database grows, results will also improve. I’d like to spend more time refining the bot script to better process and use the chat messages. The regular expression approach is pretty brute-strength, but it works for most searches.</p>
+
+<p>A bigger problem I discovered is that hosting a web app <em>and</em> a bot in the same script file causes things to break. Google makes it easy to <a href="NEED URL">deploy a bot</a> from an Apps Script project. Hosting a web app is also quite easy and uses a similar ID string. What I think happens is that those ID numbers are conflicted when both are hosted from the same project. The bot’s <code class="highlighter-rouge">onMessage</code> listener wouldn’t register an event with a web app published. One solution is to host the bot in an unbound script that points to the same spreadsheet via the key. Another (probably better, in the long run) solution would be to write a web view that is hosted on a school server and access the Google Apps Script API to display database queries. <a href="https://stackoverflow.com/a/49114086/2278429">More on that in this long demo.</a></p>
+
+<hr />
+
+<p><em><a href="https://flickr.com/photos/140768947@N06/35591920971" title="In the knowledge economy, we need a Netflix of education - TechCrunch">In the knowledge economy, we need a Netflix of education - TechCrunch</a> flickr photo by <a href="https://flickr.com/people/140768947@N06">DigitalMajority</a> shared under a <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">Creative Commons (BY-NC-SA) license</a></em></p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  March
+  20th,
+  2018
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#Code">Code</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: google apps script, javascript, knowledgebase
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Goolge Apps Script Knowledgebase Suite&amp;url=https://blog.ohheybrian.com/2018/03/goolge-apps-script-knowledgebase-suite.html&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2018/03/goolge-apps-script-knowledgebase-suite.html&amp;title=Goolge Apps Script Knowledgebase Suite" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2018/03/goolge-apps-script-knowledgebase-suite.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

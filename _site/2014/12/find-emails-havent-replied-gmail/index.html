@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      How To: Find Emails You Haven&#8217;t Replied to in Gmail | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  How To: Find Emails You Haven&#8217;t Replied to in Gmail
+</h1>
+
+
+
+<p><a href="http://www.twitter.com/davidwees">David Wees</a> asked a question on Twitter today that I thought would be pretty easy to solve:</p>
+
+<blockquote class="twitter-tweet" data-partner="tweetdeck">
+  <p>
+    <a href="https://twitter.com/bennettscience">@bennettscience</a> I probably read the email though. In fact, I at least look at every email I get in order to quickly catalog it.
+  </p>
+  
+  <p>
+    &mdash; David Wees (@davidwees) <a href="https://twitter.com/davidwees/status/539504682344128512">December 1, 2014</a>
+  </p>
+</blockquote>
+
+<p>Turns out, no so much.</p>
+
+<p>In my searching, I did come across a <a href="https://unreplied.io/">service</a> which reminds you to follow up with emails which are unreplied <em>to</em> you, but not ones which you need to <em>send the reply</em>.</p>
+
+<p>You can use filters and other little workarounds to get it done, but that usually means having to remember to actually add the filter or mark it unread when you’re going through your inbox. That’s hard to remember to do in the moment, and can even be impossible (like if you’re using the mobile app). Luckily, you can combine search operators in the web view to get pretty good results.</p>
+
+<blockquote class="pullquote">
+  <p>
+    The trick is you have to be using a signature so that every email you send has a unique string in it that we can filter out.
+  </p>
+</blockquote>
+
+<p>For me, I have a link to my website – <a href="http://ohheybrian.com">ohheybrian.com</a>. It’s pretty unique, which makes it a good search term. You can use your name, too, but you want to be careful with that in case the sender used your full name – if that’s the case, it’ll get filtered out.</p>
+
+<p>To find emails which need replies, you want to use <strong>is:read -Re: -your_unique_phrase</strong>.</p>
+
+<p>This checks for <strong>read</strong> emails (in case you forgot to mark it unread), <strong>without Re:</strong>, and <strong>without your_unique_phrase</strong>.</p>
+
+<p>Mine reads: <strong>is:read -re -ohheybrian</strong>.</p>
+
+<p>Emails which are part of a thread still show up, but they’re based on the <strong>last email of the conversation.</strong> So, the thread may contain replies, but you haven’t replied to the last one you received, which can still be handy.</p>
+
+<p>You can limit it even further by using <strong>in:inbox</strong> or some other filter, but that isn’t usually necessary.</p>
+
+<p>Unfortunately, this isn’t perfect, so you’ll still need to do some spot checking. There is no perfect solution as of right now (no is:reply filter or something similar) which you can use, but Google does have a good list of <a href="https://support.google.com/mail/answer/7190?hl=en">the Gmail search operators</a> that you can play with to build some pretty powerful searches.</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  December
+  1st
+    ,
+  2014
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#How To">How To</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=How To: Find Emails You Haven&#8217;t Replied to in Gmail&amp;url=https://blog.ohheybrian.com/2014/12/find-emails-havent-replied-gmail/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2014/12/find-emails-havent-replied-gmail/&amp;title=How To: Find Emails You Haven&#8217;t Replied to in Gmail" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2014/12/find-emails-havent-replied-gmail/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

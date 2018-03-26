@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      The Unanticipated Problem with Testing | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  The Unanticipated Problem with Testing
+</h1>
+
+
+  <div class="bgimg" style="background-image:url('assets/img/wp-content/uploads/2013/04/medium_5843577306-100x66.jpg'); background-size:cover; background-repeat:no-repeat; background-position: center center"></div>
+
+
+<p>If you live in Indiana, and if you have children (or have friends with children), you may have noticed some headlines yesterday:</p>
+
+<blockquote>
+  <p>ISTEP computer glitches boot out 27,000 students</p>
+</blockquote>
+
+<blockquote>
+  <p>Testing company’s problems worsen in third year of contract. Some educators question student results</p>
+</blockquote>
+
+<blockquote>
+  <p><a href="http://stateimpact.npr.org/indiana/2013/04/29/several-schools-suspend-istep-for-day-after-glitch-slows-online-tests/">Several Schools Suspend ISTEP+ For Day After Glitch Slows Online Tests</a></p>
+</blockquote>
+
+<blockquote>
+  <p>IPS asks schools to suspend ISTEP testing because of online problems</p>
+</blockquote>
+
+<p>I can post more, but it would take too much time.</p>
+
+<p>Now, there are a few things I would like to point out, but then I’m going to stop because I don’t want to get my blood pressure too high this early in the morning.</p>
+
+<p>Problem 1: McGraw Hill, who has been contracted to provide the IN tests through June 2014 has had glitches <em>every year since the contract began</em>. 2011: 10,000 students booted from the test. 2012: 9,000 students. 2013: 27,000 students.</p>
+
+<p>Long story short: in the last three years, 46,000 students have had their tests taken away from them in the middle of the session. And let’s remember, these are third through eighth graders.</p>
+
+<p>Problem 2: Because of the immense pressure on states to perform under impossible requirements, officials can now skew data because of the glitches. This quote, from the IndyStar article, stood out in particular:</p>
+
+<blockquote>
+  <p>In 2011, when 10,000 students were booted out of the system, 215 scores were invalidated by the state because they were lower than expected. About 723 students with scores that were higher than expected saw no change.</p>
+</blockquote>
+
+<p>Now, I know in the long run, 215 students is a drop in the bucket, but the precedent being set is absolutely inexcusable. This is opportunistic cheating and score buffering.</p>
+
+<p>Problem 3: Let’s compare this to paper-and-pencil testing for a moment. Students were booted out of the test, at times in the middle of reading a passage, and not allowed to log back in. Officials are saying testing will resume as normal on Tuesday and Wednesday. How do you expect a child, who is already feeling <em>immense</em> anxiety over the test, to have valid results?</p>
+
+<div id="attachment_1992" style="max-width: 310px" class="wp-caption alignleft">
+  <a href="http://www.flickr.com/photos/albertogp123/5843577306/"><img src="http://blog.ohheybrian.com/wp-content/uploads/2013/04/medium_5843577306-300x200.jpg" alt="photo credit: albertogp123 via photopin cc" width="300" height="200" class="size-medium wp-image-1992" srcset="https://blog.ohheybrian.com/wp-content/uploads/2013/04/medium_5843577306-300x200.jpg 300w, https://blog.ohheybrian.com/wp-content/uploads/2013/04/medium_5843577306-100x66.jpg 100w, https://blog.ohheybrian.com/wp-content/uploads/2013/04/medium_5843577306.jpg 500w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+
+  <p class="wp-caption-text">
+    photo credit: <a href="http://www.flickr.com/photos/albertogp123/5843577306/">albertogp123</a> via <a href="http://photopin.com">photopin</a> <a href="http://creativecommons.org/licenses/by/2.0/">cc</a>
+  </p>
+</div>
+<p>In essence, this would be like a teacher taking a testing booklet from students at random during testing, and then having them continue the next day. With no warning, with no explanation. This is a travesty.</p>
+
+<p>McGraw Hill, on the other hand, has sanctions worked into the contract, but officials have not levied penalties at all in any of the three failures of service.</p>
+
+<p>Travesty.</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  30th,
+  2013
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#All">All</a>
+ &nbsp;
+ 
+  <a href="/categories/#Teaching">Teaching</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=The Unanticipated Problem with Testing&amp;url=https://blog.ohheybrian.com/2013/04/the-unanticipated-problem-with-testing/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2013/04/the-unanticipated-problem-with-testing/&amp;title=The Unanticipated Problem with Testing" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2013/04/the-unanticipated-problem-with-testing/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Prototypes and Constructing Models | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  Prototypes and Constructing Models
+</h1>
+
+
+
+<p>Each year teaching chemistry, I made it a point to my students that everything they learn over the course of the year is based on observation and best guesses. <a href="http://physicsworld.com/cws/article/news/2009/aug/27/molecules-revealed-in-all-their-glory-by-microscope">Up until 2009</a>, we hadn’t actually <em>seen</em> a molecule or an atom…they’re just too small. What we <em>can</em> see is how they behave and change when stressed by an environmental factor (temperature, pressure, etc). By observing how substances change and looking for patterns, we can make pretty good guesses about the physical properties of very small pieces of matter.</p>
+
+<p>A staple of any chemistry class is modeling molecular structures with the old wooden ball-and-stick model sets. Students look at molecular formulae and converting them into a structural formula on paper and a physical model. One year, I had a class turn it into a race to see which team could assemble the series of structures the fastest. The level of abstraction was high as students learned about bond formation, stability, and proper orientation of atoms. There was also a good deal of debugging with each submission because something was wrong, but I didn’t say <em>what</em> was wrong.</p>
+
+<p>I enjoyed the rapid-pace building of models…students had fun and it broke up the monotony of class in the middle of the semester. The problem was that students didn’t internalize the ideas. The rapid prototyping was without structure and haphazard rather than thoughtful and methodical. I decided to shift the idea to the lab.</p>
+
+<blockquote class="pullquote">
+  <p>
+    Limit the input in order to maximize the output.
+  </p>
+</blockquote>
+
+<p><img src="https://farm9.staticflickr.com/8334/8415535316_a105b962cb_o.jpg" alt="" /></p>
+
+<p><small>I wish I’d run all of my labs this way.</small></p>
+
+<p>Students had a simple task: <strong>find the mass of copper you produce</strong>. There were no handouts, there were no demonstrations. I wanted to see how groups would handle having very little information. What I saw was well thought out problem solving strategies. Each group walked through the problem step by step, coming up with solutions at each roadblock. Our class was only an hour long, so they had to work quickly to find a usable procedure. I was thrilled to see students trying their ideas in small scale before rushing to a larger, quantifiable sample. Filtration methods were tested. Heating was explored (to speed up the reaction). When they found something that worked, they started from the beginning, following their outlined procedure.</p>
+
+<p>Groups who heated their reaction compared data with groups who didn’t. We then took those differences, plotted them on a graph, and talked about kinetics. There were graphs shown and best-fit lines plotted. I couldn’t have segued it better had I planned it out from the start.</p>
+
+<p>My students and I had stumbled on computational thinking strategies before we knew what they were. Science is a process, and the problem solving techniques practiced in the lab are the same techniques used in programming, art, music, investigative reporting, storytelling…the list goes on. Grover &amp; Pea (2013) talk about providing working in a “low floor, high ceiling” environment in order to promote problem solving. Students approached the problem easily and were able to reach much higher areas of thought as their solutions panned out.</p>
+
+<p>Students need opportunities to problem solve in order to learn how to solve problems. By limiting the information available as well as leaving room for experimentation, my classes had a chance to look at a task from many different perspectives.</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  September
+  12th,
+  2014
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#All">All</a>
+ &nbsp;
+ 
+  <a href="/categories/#CEP891">CEP891</a>
+ &nbsp;
+ 
+  <a href="/categories/#MAET">MAET</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Prototypes and Constructing Models&amp;url=https://blog.ohheybrian.com/2014/09/prototypes-and-constructing-models/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2014/09/prototypes-and-constructing-models/&amp;title=Prototypes and Constructing Models" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2014/09/prototypes-and-constructing-models/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

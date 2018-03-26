@@ -1,0 +1,38 @@
+.show {
+  display:block;
+  width:90%;
+  margin: 10px auto;
+  padding:10px;
+  border-bottom:2px solid #dfdfdf;
+}
+
+.show audio {
+  width: 50%;
+  display:inline-block;
+  padding:0 5px 10px 0;
+  vertical-align:middle;
+}
+
+.show span {
+  display:block;
+}
+
+.show .download {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.show .download img {
+  height: 38px;
+  width:auto;
+  -webkit-filter:saturate(0%);
+  -moz-filter:saturate(0%);
+  -o-filter:saturate(0%);
+  filter:saturate(0%);
+}
+
+.show .feelings {
+  font-style:italic;
+  background-color: #dfdfdf;
+  padding: 5px 3px;
+}

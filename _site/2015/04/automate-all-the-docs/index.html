@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Automate ALL the Docs! | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  Automate ALL the Docs!
+</h1>
+
+
+  <div class="bgimg" style="background-image:url('assets/img/wp-content/uploads/2015/04/4f737efdd1d5a.png'); background-size:cover; background-repeat:no-repeat; background-position: center center"></div>
+
+
+<p>I’ve been programming a <em>lot</em> lately, mainly to make my own life easier. I usually start something when I’m doing a menial task that a computer could do much more efficiently. As a result, I’ve learned just enough to know what should be possible, but not enough to know when something is a good idea and something is a really dumb idea. This one turned out to be a good idea.</p>
+
+<p>Two months ago, I wrote up a way to <a href="http://blog.ohheybrian.com/student-rubrics-google-forms-docappender/">automate rubric score reports using docappender</a> in Google Drive. It worked great the first month.</p>
+
+<p>Today, I went back to score a second set of writing prompts with the rubric. docappender works great to do this, but I have to go into Drive and create six separate documents with the class hour as the name for the form to work correctly. Google has no batch-create option, so I had to make each one individually. It didn’t take <em>too</em> long, but it’s something that really should take any quantity of time.</p>
+
+<p>Major props to <a href="http://www.twitter.com/ken_bauer">Ken Bauer</a> and Alan Liddell for pointing me in the right direction. Here’s what to do…</p>
+
+<h2 id="the-script">The Script</h2>
+
+<p>Computers are good at making documents. One way to do this on a Mac (or Linux, for that matter) is to create a shell script which can be run from the terminal. Alan gave me this little snippet to get me started:</p>
+
+<div id="wp-gistpenfile-first-script">
+  <h3 class="wp-gistpenfile-title">
+    first-script
+  </h3>
+
+  <pre class="gistpen line-numbers"><code class="language-bash">for i in $(seq 1 7);
+do
+touch file$i;
+done</code></pre>
+</div>
+
+<p>That worked great. But, what if I wanted more than seven files? I wanted to give myself a couple variables which would make the script more flexible:</p>
+
+<div id="wp-gistpenfile-second-script">
+  <h3 class="wp-gistpenfile-title">
+    second-script
+  </h3>
+
+  <pre class="gistpen line-numbers"><code class="language-bash">echo "Number of files: ";
+
+read number;
+
+for i in (seq 1 $number);
+do
+touch file$i;
+done</code></pre>
+</div>
+
+<p>And that was all well and good…but what if I wanted a specific prefix? And, could I make it right into a Google Doc? Yes, and yes.</p>
+
+<div id="wp-gistpenfile-third-script">
+  <h3 class="wp-gistpenfile-title">
+    third-script
+  </h3>
+
+  <pre class="gistpen line-numbers"><code class="language-bash">#! usr/bin/env bash
+echo "You're about to create a series of files."
+echo "Enter the number of files you'd like to create and then push [ENTER]: "
+
+read number
+
+echo "Enter a generic filename and then press [ENTER]: "
+
+read file
+
+for i in $(seq 1 $number);
+do
+touch $file$1.doc;
+done
+
+echo "Finished."</code></pre>
+</div>
+
+<h2 id="make-it-better">Make it better</h2>
+
+<p>This was great. I could make files with less than three dozen keystrokes and clicks. But, like any good programmer, I wanted it to be done with even fewer – more automation was needed.</p>
+
+<p>I wanted to make the script <strong>executable</strong> – I wanted it to run just by typing the name of the program into the terminal. So, I ran <code class="highlighter-rouge">chmod +x makedoc</code> (makedoc is what I called the program…real original, eh?) and gave it permission to run. I also added <code class="highlighter-rouge"><span class="c">#! /usr/bin/env bash</span></code> to the first line of the script to make sure it ran with the right kernel.</p>
+
+<p>Then, I copied the script to my computer’s <code class="highlighter-rouge">usr/local/bin</code> directory and voila! All I have to do is go to the folder where I want to make the files, open up the Terminal and type in <code class="highlighter-rouge">makedoc</code> and make my sequence of files.</p>
+
+<p><strong>Get ready to have your mind blown.</strong></p>
+
+<p>“That’s great to make them on your computer, but you need them on Google Docs to work with docappender. Wasn’t that the point?”</p>
+
+<p>Google Drive allows me to sync certain folders to my computer. The script doesn’t know if I’m in a local folder or one synced from the web. So, all I have to do is <code class="highlighter-rouge">cd</code> to the right spot in Terminal and run the script and <strong>BOOM</strong> – they’re all in Drive, ready to be used.</p>
+
+<p>It’s. awesome.</p>
+
+<p>Right now, it creates a Word document, which can be synced through the Drive folder. I would <em>like</em> to have a way to create a Google Document locally, but takes a little more computing power than I have time for tonight. Perhaps at a later date…</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  April
+  1st
+    ,
+  2015
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#All">All</a>
+ &nbsp;
+ 
+  <a href="/categories/#Technology">Technology</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Automate ALL the Docs!&amp;url=https://blog.ohheybrian.com/2015/04/automate-all-the-docs/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2015/04/automate-all-the-docs/&amp;title=Automate ALL the Docs!" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2015/04/automate-all-the-docs/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>

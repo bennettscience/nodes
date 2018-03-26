@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Make a Website for your Flash Drive | nodes
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <!-- <link type="application/atom+xml" rel="alternate" href="/nodes/_site/feed.xml" title="nodes" /> -->
+  <!-- Use RSS-2.0 -->
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="nodes | "/>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento+Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <!-- Comment engine driven by Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.1.0/js/md5.js"></script>
+  <script src="https://ohheybrian.com/nodes/_site/js/blog.js"></script>
+
+  <script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  //
+  // ga('create', '', 'auto');
+  // ga('send', 'pageview');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56616200-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-56616200-2');
+</script> -->
+
+
+
+</head>
+
+
+<body>
+
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title">
+    <a href="/">nodes</a>
+  </h3>
+</header>
+
+    <div class="menu">
+  <div class="salutation">
+    <h1>I'm Brian. I have other websites.</h1>
+  </div>
+  <nav class="menu-content">
+    
+      <a href="///ohheybrian.com">home</a>
+    
+      <a href="///ohheybrian.com/privacy">privacy</a>
+    
+      <a href="pages/docutube.html">DocuTube</a>
+    
+      <a href="pages/doc-emailer.html">Doc Emailer</a>
+    
+  </nav>
+  <nav class="social-icons">
+    
+      <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+    
+      <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+      <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    
+      <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+    
+      <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+    
+  </nav>
+  <hr />
+  <div class="generic-text">
+    <h2>contact</h2>
+    <p>
+      To reach me, send an email to <a href="mailto:brian@ohheybrian.com">brian [at] ohheybrian [dot] com</a>.
+    </p>
+    <p>
+      Do not send marketing requests, guest post solicitations, or link-for-link offers. I don't want them.
+    </p>
+  </div>
+  <hr />
+  <div class="generic-text">
+    <h2>archive</h2>
+    <a href="/pages/archive.html">See all posts by Month/Year</a>
+  </div>
+</div>
+
+    <div class="post-container">
+      <h1>
+  Make a Website for your Flash Drive
+</h1>
+
+
+
+<h3 id="the-problem">The Problem</h3>
+
+<p>If you’ve ever been in a situation where substitute teachers can log onto the computer but not do much with the Internet other than take attendance, it can make sub plans hard to pull together, especially if you want students to see a video. This is doubly true if you’re not in 1:1 environment where students can just pull it up on their own.</p>
+
+<p>Over the last couple years, I’ve <a href="http://blog.ohheybrian.com/making-sub-plans-easier/">added an “absent” section</a> to my class website to hold instructions for the sub. I’d make a video, put it on YouTube, and then <a href="http://ohheybrian.com/absent">put it on the site</a> for the sub to play for the class. Once it’s set up, I just update the video and the instructions.</p>
+
+<p>This requires two things: an Internet connection which allows for YouTube and one that allows external sites to be displayed. Neither can be done currently.</p>
+
+<h3 id="the-fix">The Fix</h3>
+
+<p>I got around access issues by simply creating a local copy of the website and putting it on a flash drive. Modern web browsers can have video embedded directly in the HTML using the <code class="highlighter-rouge">video</code> tag, which makes the process much simpler.</p>
+
+<p>But what if you don’t know how to write HTML or CSS, like this method requires?</p>
+
+<p>I’ve created a template to do it for you.</p>
+
+<p><img class="aligncenter size-full wp-image-4041" src="http://blog.ohheybrian.com/wp-content/uploads/2015/09/2015-09-29_15-01-50.png" alt="2015-09-29_15-01-50" width="587" height="532" srcset="https://blog.ohheybrian.com/wp-content/uploads/2015/09/2015-09-29_15-01-50.png 587w, https://blog.ohheybrian.com/wp-content/uploads/2015/09/2015-09-29_15-01-50-300x272.png 300w" sizes="(max-width: 587px) 100vw, 587px" /></p>
+
+<h3 id="using-the-templatizer">Using the Templatizer</h3>
+
+<p>It’s a pretty simple tool for you to use. The challenge with these things is always to reduce the number of steps and clicks for general users. The point is to give you a fully-functioning website without knowing any code.</p>
+
+<p>To use the templatizer:</p>
+
+<ol>
+  <li>enter your class name, which becomes the title of the generated page.</li>
+  <li>This step is very important – enter the <strong>filename of the video <em>exactly</em> as you have it on your hard or flash drive</strong>. The code needs media to reference, so if you put the wrong file, it won’t work. <strong>This only works with mp4 files for the moment.</strong> Also, try to avoid spaces in the filename because they can cause some wonkiness.</li>
+  <li>Include any written directions you’d like shown below the video. If you don’t put anything here, nothing shows. This is unformatted text – bullets and other items won’t show up, so keep it simple.</li>
+</ol>
+
+<p>When you’re finished, click on “Create and Download Page” button to download your shiny new website.</p>
+
+<video autoplay="autoplay" loop="loop" width="622" height="auto"><source src="http://blog.ohheybrian.com/wp-content/uploads/2015/09/demo1.webm" type="video/webm" /></video>
+
+<p>Once you have the file, you need to move it to the folder with the video. <strong>They must be in the same folder to work correctly</strong>. For me, I put these files in a folder call <strong>absent</strong> on the flash drive to make things easier on the sub.</p>
+
+<video autoplay="autoplay" loop="loop" muted="" width="622" height="auto"><source src="http://blog.ohheybrian.com/wp-content/uploads/2015/09/demo2.webm" type="video/webm" /></video>
+
+<h3 id="the-result">The Result</h3>
+
+<p>Now, once the downloaded file and video are in the same place, open it up to test your page. You’re looking for two things – that the video plays and that the file is really being called from the filesystem, not the Internet.</p>
+
+<video autoplay="autoplay" loop="loop" muted="" width="622" height="auto"><source src="http://blog.ohheybrian.com/wp-content/uploads/2015/09/demo3.webm" type="video/webm" /></video>
+
+<p>Your browser address bar should have something similar to this if it’s from the flash drive:</p>
+
+<p><img class="aligncenter size-full wp-image-4055" src="http://blog.ohheybrian.com/wp-content/uploads/2015/09/2015-09-29_16-27-52.png" alt="2015-09-29_16-27-52" width="266" height="24" /></p>
+
+<p>It’s not perfect and limited to MP4 video right now, but it works. It solves a problem for me and I hope it can do the same for you.</p>
+
+<h3 style="text-align: center;">
+  <a href="http://ohheybrian.com/sub-template.html">Make your own template</a>
+</h3>
+
+<p style="text-align: center;">
+  <a href="https://gist.github.com/bennettscience/b85b7e028aaba161c8f2">Get the source.</a>
+</p>
+
+
+
+<span class="post-date">
+  Written on
+  
+  September
+  29th,
+  2015
+  by
+  
+    Brian Bennett
+  
+</span>
+<span class="post-cat">
+  Categorized in: 
+  
+  <a href="/categories/#All">All</a>
+ &nbsp;
+ 
+  <a href="/categories/#Technology">Technology</a>
+ 
+ 
+</span>
+<span class="post-tags">
+  Tagged: 
+</span>
+
+<hr />
+
+<div class="post-date">Feel free to share!</div>
+  <div class="sharing-icons">
+    <a href="https://twitter.com/intent/tweet?text=Make a Website for your Flash Drive&amp;url=https://blog.ohheybrian.com/2015/09/make-a-website-for-your-flash-drive/&amp;via=bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.ohheybrian.com/2015/09/make-a-website-for-your-flash-drive/&amp;title=Make a Website for your Flash Drive" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=https://blog.ohheybrian.com/2015/09/make-a-website-for-your-flash-drive/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+<div class="comments">
+  <h2>Leave a comment</h2>
+  <form id="comment" >
+    <label for="message">Message</label>
+    <textarea id="message" ></textarea>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" value="">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" value="" placeholder="Your email is never shared">
+
+    <input type="submit" value="Submit Comment">
+    <p class="hide" id="toast">Thank you for your comment. It will appear after moderation.<p>
+  </form>
+  <div id="comment-list"></div>
+</div>
+
+    </div>
+
+    <footer class="footer">
+  
+    <a href="https://www.github.com/bennettscience" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+  
+    <a href="https://twitter.com/bennettscience" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+    <a href="mailto:brian@ohheybrian.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  
+    <a href="https://flickr.com/photos/bennettscience" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i></a>
+  
+    <a href="/rss-feed.xml" target="_blank"><i class="fa fa-rss-square" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/nodes/_site/menu/about.html">nodes |  by Brian Bennett</a></div>
+</footer>
+
+
+  </div>
+
+</body>
+</html>
