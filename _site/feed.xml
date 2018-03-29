@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/nodes/_site/feed.xml" rel="self" type="application/atom+xml" /><link href="/nodes/_site/" rel="alternate" type="text/html" /><updated>2018-03-26T11:20:43-04:00</updated><id>/nodes/_site/</id><title type="html">nodes</title><subtitle></subtitle><author><name>Brian Bennett</name></author><entry><title type="html">Reclaiming Jekyll</title><link href="/nodes/_site/2018/03/reclaiming-jekyll.html" rel="alternate" type="text/html" title="Reclaiming Jekyll" /><published>2018-03-26T10:28:35-04:00</published><updated>2018-03-26T10:28:35-04:00</updated><id>/nodes/_site/2018/03/reclaiming-jekyll</id><content type="html" xml:base="/nodes/_site/2018/03/reclaiming-jekyll.html">&lt;p&gt;In December, &lt;a href=&quot;https://blog.ohheybrian.com/2018/01/move-wordpress-to-jekyll-complete-guide.html&quot;&gt;I moved off of WordPress to Jekyll&lt;/a&gt;. This is easy to do with GitHub Pages, but I wanted to self-host because keeping a SSL certificate was important to me. I followed &lt;a href=&quot;https://blog.timowens.io/running-a-jekyll-site-on-reclaim-hosting/&quot;&gt;Tim Owen’s sample&lt;/a&gt; had everything up and working well.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/nodes/_site/feed.xml" rel="self" type="application/atom+xml" /><link href="/nodes/_site/" rel="alternate" type="text/html" /><updated>2018-03-29T14:56:58-04:00</updated><id>/nodes/_site/</id><title type="html">nodes</title><subtitle></subtitle><author><name>Brian Bennett</name></author><entry><title type="html">Event Manager Web App</title><link href="/nodes/_site/2018/03/event-manager-web-app.html" rel="alternate" type="text/html" title="Event Manager Web App" /><published>2018-03-29T13:41:44-04:00</published><updated>2018-03-29T13:41:44-04:00</updated><id>/nodes/_site/2018/03/event-manager-web-app</id><content type="html" xml:base="/nodes/_site/2018/03/event-manager-web-app.html">&lt;p&gt;Adding to the list of things to blog so I don’t forget about them in the future, I built an event manager web app for prom.&lt;/p&gt;
+
+&lt;h2 id=&quot;sales&quot;&gt;Sales&lt;/h2&gt;
+
+&lt;p&gt;Writing data to/from a spreadsheet through a webapp is faster and easier on the sales team than having them edit a spreadsheet directly. Names are pulled by matching ID numbers in a lookup database and populated in the form automatically.&lt;/p&gt;
+
+&lt;p&gt;When a ticket is sold, the name is added to a running list on the right side. The app also ensures no students purchase tickets more than once by comparing current sales with the submitted ID number and returns an error if the person already exists in the sales record.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/sale.gif&quot; alt=&quot;Ticket sale interaction&quot; /&gt;
+&lt;em&gt;&lt;a href=&quot;/assets/img/sale.gif&quot;&gt;click for a larger image&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;manager&quot;&gt;Manager&lt;/h2&gt;
+
+&lt;p&gt;Students are checked into and out of the event by the door staff. A full list is returned to the app that can then be filtered by ID number by the staff. Clicking on a number populates a card showing the student information for verification. They can then be timestamped into and out of the event by the staff.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/manager.gif&quot; alt=&quot;Manager workflow&quot; /&gt;
+&lt;em&gt;&lt;a href=&quot;/assets/img/manager.gif&quot;&gt;click for a larger image&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This worked well because each of our students has a unique six-digit ID number we can use to look up their information. It could be quickly repurposed to &lt;em&gt;assign&lt;/em&gt; an ID number at registration rather than assign a name and have the manager page function the same.&lt;/p&gt;
+
+&lt;p&gt;Full code for the project is &lt;a href=&quot;https://gist.github.com/bennettscience/430e2bf28998bd2beace3185b92da451&quot;&gt;on this GitHub Gist&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;Featurend image: &lt;a href=&quot;https://flickr.com/photos/bearfaced/4752293032&quot; title=&quot;Conference Queue&quot;&gt;Conference Queue&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/bearfaced&quot;&gt;Bearfaced&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-nd/2.0/&quot;&gt;Creative Commons (BY-NC-ND) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="google apps script" /><category term="web app" /><category term="project" /><category term="event manager" /><category term="gsuite" /><summary type="html">Adding to the list of things to blog so I don’t forget about them in the future, I built an event manager web app for prom.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://farm5.static.flickr.com/4142/4752293032_9684cc36a1_z.jpg" /></entry><entry><title type="html">Reclaiming Jekyll</title><link href="/nodes/_site/2018/03/reclaiming-jekyll.html" rel="alternate" type="text/html" title="Reclaiming Jekyll" /><published>2018-03-26T10:28:35-04:00</published><updated>2018-03-26T10:28:35-04:00</updated><id>/nodes/_site/2018/03/reclaiming-jekyll</id><content type="html" xml:base="/nodes/_site/2018/03/reclaiming-jekyll.html">&lt;p&gt;In December, &lt;a href=&quot;https://blog.ohheybrian.com/2018/01/move-wordpress-to-jekyll-complete-guide.html&quot;&gt;I moved off of WordPress to Jekyll&lt;/a&gt;. This is easy to do with GitHub Pages, but I wanted to self-host because keeping a SSL certificate was important to me. I followed &lt;a href=&quot;https://blog.timowens.io/running-a-jekyll-site-on-reclaim-hosting/&quot;&gt;Tim Owen’s sample&lt;/a&gt; had everything up and working well.&lt;/p&gt;
 
 &lt;p&gt;I faced two specific challenges, though.&lt;/p&gt;
 
@@ -421,72 +445,4 @@ macroscopic and microscopic levels.&lt;/blockquote&gt;
 
 &lt;p&gt;Admittedly, the visual analogy isn’t perfect because usually, when a dartboard is involved, you’re shooting for the bullseye. We need to get to the &lt;strong&gt;what&lt;/strong&gt; eventually, but it’s always within the context of what’s &lt;em&gt;around&lt;/em&gt; it, the standards and assessments.&lt;/p&gt;
 
-&lt;p&gt;Each post in this series will dive deeper into designing &lt;em&gt;units&lt;/em&gt; of instruction rather than flipped lessons. Comments, suggestions, and feedback are always appreciated.&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="planning" /><category term="instruction" /><category term="lessons" /><category term="framework" /><summary type="html">The idea for this series was sparked when I was helping some people research sample flipped lessons for a curriculum workshop I was facilitating. I was embarrassed while working with this teacher because most of what we found was significantly below standard.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/9/8579/15899932525_cce383f209_b.jpg" /></entry><entry><title type="html">Moving from WordPress to Jekyll</title><link href="/nodes/_site/2018/01/move-wordpress-to-jekyll-complete-guide.html" rel="alternate" type="text/html" title="Moving from WordPress to Jekyll" /><published>2018-01-01T00:00:00-05:00</published><updated>2018-01-01T00:00:00-05:00</updated><id>/nodes/_site/2018/01/move-wordpress-to-jekyll-complete-guide</id><content type="html" xml:base="/nodes/_site/2018/01/move-wordpress-to-jekyll-complete-guide.html">&lt;p&gt;&lt;em&gt;This is a long post in several parts. Jump to different sections using the links below.&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#intro&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#export&quot;&gt;Exporting WordPress&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#hosting&quot;&gt;Hosting&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#comment-system&quot;&gt;Comments&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#updating&quot;&gt;Updating&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#conclusion&quot;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;intro&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Long story short, I moved from self-hosted WordPress to a static HTML site generated by Jekyll.&lt;/p&gt;
-
-&lt;p&gt;WordPress does it’s job &lt;em&gt;really well.&lt;/em&gt; I think there was some statistic &lt;em&gt;[citation needed]&lt;/em&gt; that showed nearly 30% of the Internet runs on WordPress in one form or another. That’s a lot of the Internet.&lt;/p&gt;
-
-&lt;p&gt;But, because of ubiquity, there is a significant drawback: WordPress sites are prime targets for malicious code and hacking. A plugin on my site shows how many dozens (and sometimes hundreds!) of login attempts there have been. It’s a battle to make sure security plugins are always up to date. That leads to other issues: incompatibility with plugins.&lt;/p&gt;
-
-&lt;p&gt;So, This entire blog - 2018 all the way back to 2010 - is a set of static HTML pages generated by Jekyll on my &lt;a href=&quot;https://reclaimhosting.com&quot;&gt;Reclaim Hosting&lt;/a&gt; server. No more logins, no more plugins to check and update. Just nice, clean, lightweight HTML.&lt;/p&gt;
-
-&lt;p&gt;It took me several weeks to work out the details for the migration. It wasn’t too bad, but I learned some things along the way that I’d like to share here.&lt;/p&gt;
-
-&lt;h2 id=&quot;export&quot;&gt;Exporting WordPress&lt;/h2&gt;
-
-&lt;p&gt;Jekyll uses Markdown and YAML data to generate a website. It’s quite clever how they pulled it all together, actually, to mimic a typical dynamic (database-driven) blog like WordPress. &lt;a href=&quot;https://wordpress.org/plugins/jekyll-exporter/&quot;&gt;There is a plugin&lt;/a&gt; which will export your WordPress blog formatted for Jekyll, &lt;em&gt;including&lt;/em&gt; all post metadata like tags, permalinks, and image resources. It gives you a .zip file which you can then extract and use to populate your new Jekyll site.&lt;/p&gt;
-
-&lt;p&gt;First, it extracts your &lt;em&gt;entire&lt;/em&gt; media library. WordPress automatically generates several files for each image you’ve uploaded for different display situations. My media folder was well over 300 MB because I didn’t take the time to clean the library up. I’d suggest cleaning up any unused image files before the export.&lt;/p&gt;
-
-&lt;p&gt;Second, any pages you have on your site (not blog posts) get their own folder. Take time to go through each folder and make sure it’ll fit the Jekyll file structure.&lt;/p&gt;
-
-&lt;p&gt;Finally, do a regular WordPress XML export so you have an entire backup of your blog. The Jekyll plugin only converts posts and pages. If you have other resources, you’ll want to save them somewhere before deleting or redirecting your site.&lt;/p&gt;
-
-&lt;h2 id=&quot;hosting&quot;&gt;Hosting&lt;/h2&gt;
-
-&lt;p&gt;The great thing about Jekyll is that it is ready to go with GitHub Pages. If you’re already using GitHub, you can go that route with your &lt;em&gt;username.github.io&lt;/em&gt; account with a single commit and push. I have a lot of traffic (humblebrag much?) to &lt;a href=&quot;https://blog.ohheybrian.com&quot;&gt;blog.ohheybrian.com&lt;/a&gt; already and I don’t want to set up a redirect. I’m also already using my GitHub Pages site for my (web apps)[https://dev.ohheybrian.com]. You can map a custom domain to GitHub Pages, but &lt;em&gt;you cannot use HTTPS on that domain&lt;/em&gt;, which was a dealbreaker for me.&lt;/p&gt;
-
-&lt;p&gt;Each web host is different, so you need to see if yours supports Ruby 2.4 or higher. Lucky for me, Tim Ownes from &lt;a href=&quot;https://reclaimhosting.com&quot;&gt;Reclaim Hosting&lt;/a&gt; already had &lt;a href=&quot;https://blog.timowens.io/running-a-jekyll-site-on-reclaim-hosting/&quot;&gt;a blog post&lt;/a&gt; on setting it up with my Reclaim account. I followed his instructions to the letter and got it working on the second try (I borked some theme and file structures on the first, so I deleted everyting and started over).&lt;/p&gt;
-
-&lt;p&gt;SSL is a big deal. If you don’t know what it is, read &lt;a href=&quot;https://www.troyhunt.com/the-6-step-happy-path-to-https/&quot;&gt;The Six Step “Happy Path” to SSL&lt;/a&gt; by Troy Hunt (or anything else he writes, honestly).&lt;/p&gt;
-
-&lt;h2 id=&quot;comment-system&quot;&gt;Comments&lt;/h2&gt;
-
-&lt;p&gt;I don’t get a &lt;em&gt;ton&lt;/em&gt; of comments, but with a static HTML site, there isn’t an easy way to include comments. If you’re hosting with Github Pages, &lt;a href=&quot;https://staticman.net/&quot;&gt;Staticman&lt;/a&gt; is an &lt;em&gt;awesome&lt;/em&gt; and secure way to include comments on your posts. Another option would be to use a third-party tool like Disqus. I didn’t go with Disqus because they’ve had some trouble with clean use of user data in the past.&lt;/p&gt;
-
-&lt;p&gt;I decided to create a custom commenting form (based on &lt;a href=&quot;https://css-tricks.com/building-a-jekyll-site-part-3-of-3/&quot;&gt;this post&lt;/a&gt;) using &lt;a href=&quot;https://www.firebase.com&quot;&gt;Firebase&lt;/a&gt;. It’s a real-time database run by Google which can push information anywhere I want it to go. Each post has a query to the database to check for comments. Pushing the comments to the database is handled with a little bit of JavaScript, which I’ve modified from the linked tutorial:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/bennettscience/79fe1b569c4b0f6f14eb390240518aeb.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;Firebase also includes cloud functions that can be written in Node JS. I’ve never written any applications in Node, so this was a learning experience for me. This function watches the comment database and simply notifies me if a change has been made using the following script:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/bennettscience/cce8ca3906f2e2682bb8b31e32afb2f1.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;It could definitely use some refinement, but it does what I need it to do.&lt;/p&gt;
-
-&lt;h2 id=&quot;updating&quot;&gt;Updating&lt;/h2&gt;
-
-&lt;p&gt;Relying on an Internet connection to write a blog post seems so 2012. With Jekyll, I can write in any text editor and then upload when it’s ready. If I’m on my main machine, I can even serve the page locally to see what the update will look like as if it were live on the web. It’s a small perk, but as I’ve moved to working more and more with text files (rather than things like Google docs) it’s nice to be able to open a blank text file and start writing. I can come back whenever I want and finish up or let it sit on the large pile of started-and-never-finished posts.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;In the end, this is a highly technical shift away from something built for the end user into something I have &lt;em&gt;absolute control&lt;/em&gt; over. If the blog breaks, it’s my fault and I will have to work to fix it, which is satisfying in its own nerdy way. It’s definitely not the easiest route to start (or continue) blogging, but it’s mine, which is fulfilling.&lt;/p&gt;
-
-&lt;p&gt;If you’d like to know more about how to make a switch, feel free to try out that nifty commenting section below or just write me an email: &lt;a href=&quot;mailto:brian@ohheybrian.com&quot;&gt;brian [at] ohheybrian [dot] com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;–&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Featured image is &lt;a href=&quot;https://flickr.com/photos/maxschiffer/38579893751&quot; title=&quot;Find your way&quot;&gt;Find your way&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/maxschiffer&quot;&gt;maximilianschiffer&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nd/2.0/&quot;&gt;Creative Commons (BY-ND) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="Code" /><category term="wordpress" /><category term="jekyll" /><category term="blogging" /><category term="how-to" /><summary type="html">This is a long post in several parts. Jump to different sections using the links below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/5/4562/38579893751_b3b89701b7_c.jpg" /></entry></feed>
+&lt;p&gt;Each post in this series will dive deeper into designing &lt;em&gt;units&lt;/em&gt; of instruction rather than flipped lessons. Comments, suggestions, and feedback are always appreciated.&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="planning" /><category term="instruction" /><category term="lessons" /><category term="framework" /><summary type="html">The idea for this series was sparked when I was helping some people research sample flipped lessons for a curriculum workshop I was facilitating. I was embarrassed while working with this teacher because most of what we found was significantly below standard.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/9/8579/15899932525_cce383f209_b.jpg" /></entry></feed>
