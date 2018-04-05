@@ -7,6 +7,19 @@
 		<atom:link href="rss-feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Mugs</title>
+				
+				
+					<description>&lt;p&gt;Every Friday, our local NPR station has a segment called &lt;a href=&quot;http://wvpe.org/topic/michiana-chronicles&quot;&gt;&lt;em&gt;Michiana Chronicles&lt;/em&gt;&lt;/a&gt; which features essays by area writers. I don’t catch it often, but I happened to be driving today when it came on. It’s titled &lt;a href=&quot;http://wvpe.org/post/michiana-chronicles-mug-stories&quot;&gt;&lt;em&gt;Mug Stories&lt;/em&gt;&lt;/a&gt;and it inspired this post.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Fri, 30 Mar 2018 09:28:16 -0400</pubDate>
+				<link>/2018/03/mugs.html</link>
+				<guid isPermaLink="true">/2018/03/mugs.html</guid>
+			</item>
+		
+			<item>
 				<title>Event Manager Web App</title>
 				
 				
@@ -121,19 +134,6 @@
 				<pubDate>Tue, 09 Jan 2018 09:57:56 -0500</pubDate>
 				<link>/2018/01/planning-a-flipped-unit-part-2.html</link>
 				<guid isPermaLink="true">/2018/01/planning-a-flipped-unit-part-2.html</guid>
-			</item>
-		
-			<item>
-				<title>Planning a Flipped Unit</title>
-				
-				
-					<description>&lt;p&gt;The idea for this series was sparked when I was helping some people research sample flipped lessons for a curriculum workshop I was facilitating. I was embarrassed while working with this teacher because most of what we found was significantly below standard.&lt;/p&gt;
-
-</description>
-				
-				<pubDate>Sat, 06 Jan 2018 00:00:00 -0500</pubDate>
-				<link>/2018/01/planning-a-flipped-unit-part-1.html</link>
-				<guid isPermaLink="true">/2018/01/planning-a-flipped-unit-part-1.html</guid>
 			</item>
 		
 	</channel>
