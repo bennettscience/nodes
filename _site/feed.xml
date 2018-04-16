@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/nodes/_site/feed.xml" rel="self" type="application/atom+xml" /><link href="/nodes/_site/" rel="alternate" type="text/html" /><updated>2018-04-05T12:14:48-04:00</updated><id>/nodes/_site/</id><title type="html">nodes</title><subtitle></subtitle><author><name>Brian Bennett</name></author><entry><title type="html">Mugs</title><link href="/nodes/_site/2018/03/mugs.html" rel="alternate" type="text/html" title="Mugs" /><published>2018-03-30T09:28:16-04:00</published><updated>2018-03-30T09:28:16-04:00</updated><id>/nodes/_site/2018/03/mugs</id><content type="html" xml:base="/nodes/_site/2018/03/mugs.html">&lt;p&gt;Every Friday, our local NPR station has a segment called &lt;a href=&quot;http://wvpe.org/topic/michiana-chronicles&quot;&gt;&lt;em&gt;Michiana Chronicles&lt;/em&gt;&lt;/a&gt; which features essays by area writers. I don’t catch it often, but I happened to be driving today when it came on. It’s titled &lt;a href=&quot;http://wvpe.org/post/michiana-chronicles-mug-stories&quot;&gt;&lt;em&gt;Mug Stories&lt;/em&gt;&lt;/a&gt;and it inspired this post.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/nodes/_site/feed.xml" rel="self" type="application/atom+xml" /><link href="/nodes/_site/" rel="alternate" type="text/html" /><updated>2018-04-16T13:23:59-04:00</updated><id>/nodes/_site/</id><title type="html">nodes</title><subtitle></subtitle><author><name>Brian Bennett</name></author><entry><title type="html">Pico: A Tiny Blog</title><link href="/nodes/_site/2018/04/pico-a-tiny-blog.html" rel="alternate" type="text/html" title="Pico: A Tiny Blog" /><published>2018-04-16T13:08:12-04:00</published><updated>2018-04-16T13:08:12-04:00</updated><id>/nodes/_site/2018/04/pico-a-tiny-blog</id><content type="html" xml:base="/nodes/_site/2018/04/pico-a-tiny-blog.html">&lt;p&gt;More of my life is run in plain text. I don’t really use word processors any more (other than Google Docs for work) because they’re heavy and not really compatible across various devices. So, I’ve gotten in the habit of writing in a text editor (Atom, at the moment) and syncing across devices with Git or Dropbox, depending on the circumstances.&lt;/p&gt;
+
+&lt;p&gt;I’ve also been trying to do more with Python rather than relying on JavaScript. I don’t always have an Internet connection, and you don’t need a connection to be productive with Python.&lt;/p&gt;
+
+&lt;p&gt;The third element in this perfect storm was looking at my site access logs. I moved this blog to Jekyll back in December mainly because I was running out of hosting space with WordPress. I don’t really know how to do crazy database stuff like &lt;a href=&quot;https://twitter.com/cogdog&quot;&gt;Alan&lt;/a&gt; or &lt;a href=&quot;https;//twitter.com/twoodwar&quot;&gt;Tom&lt;/a&gt;, nor do I need to. I also saw a &lt;em&gt;ton&lt;/em&gt; of failed login attempts on my WordPress site (thank goodness for strong passwords), so I decided to go databaseless with the switch. It’s hard to hack plain HTML.&lt;/p&gt;
+
+&lt;p&gt;This is what birthed the idea for &lt;strong&gt;&lt;a href=&quot;https://ohheybrian.com/pico&quot;&gt;Pico&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pico is a tiny blogging engine written in Python that reads plaintext files.&lt;/p&gt;
+
+&lt;p&gt;Jekyll is great for complex site structure, but it requires the site to be regenerated (pagination updated, categories and tags indexed, etc) each time you publish a post. What if you want something smaller?&lt;/p&gt;
+
+&lt;p&gt;Pico is written in Flask, a templating engine written in Python. The core is similar to Jekyll: a script reads data somewhere and renders it in templated HTML. The main difference is that Pico does that when the page loads from straight text files rather than rendering the site beforehand. The idea is that you can write a post somewhere with minimal markup and frills and have the browser do most of the work. Styles are minimal and the source files are kept to a bare minimum. It even has RSS!&lt;/p&gt;
+
+&lt;p&gt;You can &lt;a href=&quot;https://ohheybrian.com/pico&quot;&gt;see a demo of the site&lt;/a&gt; if you’re curious and grab the source and see some of the technical information on &lt;a href=&quot;https://github.com/bennettscience/pico&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://flickr.com/photos/bennettscience/10176979196&quot; title=&quot;DSC_0146&quot;&gt;DSC_0146&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/bennettscience&quot;&gt;bennettscience&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-sa/2.0/&quot;&gt;Creative Commons (BY-NC-SA) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="blogging" /><category term="python" /><category term="project" /><summary type="html">More of my life is run in plain text. I don’t really use word processors any more (other than Google Docs for work) because they’re heavy and not really compatible across various devices. So, I’ve gotten in the habit of writing in a text editor (Atom, at the moment) and syncing across devices with Git or Dropbox, depending on the circumstances.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://farm3.static.flickr.com/2840/10176979196_8bb10b53cf_z.jpg" /></entry><entry><title type="html">Mugs</title><link href="/nodes/_site/2018/03/mugs.html" rel="alternate" type="text/html" title="Mugs" /><published>2018-03-30T09:28:16-04:00</published><updated>2018-03-30T09:28:16-04:00</updated><id>/nodes/_site/2018/03/mugs</id><content type="html" xml:base="/nodes/_site/2018/03/mugs.html">&lt;p&gt;Every Friday, our local NPR station has a segment called &lt;a href=&quot;http://wvpe.org/topic/michiana-chronicles&quot;&gt;&lt;em&gt;Michiana Chronicles&lt;/em&gt;&lt;/a&gt; which features essays by area writers. I don’t catch it often, but I happened to be driving today when it came on. It’s titled &lt;a href=&quot;http://wvpe.org/post/michiana-chronicles-mug-stories&quot;&gt;&lt;em&gt;Mug Stories&lt;/em&gt;&lt;/a&gt;and it inspired this post.&lt;/p&gt;
 
 &lt;p&gt;I definitely have my own preferred mugs. I usually look for the wide-mouthed blue mug that we got in the Korean equivalent of a dollar store. I bought it because I needed something for coffee in my first teaching position. We were 24, transplanted to the center of Seoul and learning how to build a life together. That was the same year I bought my wife the wide, hand-thrown mug with a violet painted on it from 인사동.&lt;/p&gt;
 
@@ -325,68 +343,4 @@
 &lt;p&gt;We’re so afraid of hurting one another’s feelings about teaching that we &lt;em&gt;don’t talk about what’s really happening.&lt;/em&gt; That has to change.&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;p&gt;&lt;em&gt;Featured image &lt;a href=&quot;https://flickr.com/photos/christianspenceranderson/3339247264&quot; title=&quot;old jumper cables inside an old barn, frisco, texas&quot;&gt;old jumper cables inside an old barn, frisco, texas&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/christianspenceranderson&quot;&gt;coltera&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-sa/2.0/&quot;&gt;Creative Commons (BY-NC-SA) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="coaching" /><category term="reflection" /><summary type="html">I planned, and ran, a really unsuccessful series of PD for a group of teachers this year. Unfortunately, I wasn’t wise enough to accept the non-success until we’d reached almost a breaking point in the group.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c2.staticflickr.com/4/3633/3339247264_e03fa95e7e_b.jpg" /></entry><entry><title type="html">Planning a Flipped Unit Part 2</title><link href="/nodes/_site/2018/01/planning-a-flipped-unit-part-2.html" rel="alternate" type="text/html" title="Planning a Flipped Unit Part 2" /><published>2018-01-09T09:57:56-05:00</published><updated>2018-01-09T09:57:56-05:00</updated><id>/nodes/_site/2018/01/planning-a-flipped-unit-part-2</id><content type="html" xml:base="/nodes/_site/2018/01/planning-a-flipped-unit-part-2.html">&lt;p&gt;The biggest portion of the circle, the &lt;em&gt;Why&lt;/em&gt;, defines &lt;strong&gt;everything&lt;/strong&gt; you do in the unit. Before planning a single activity (or lesson), it is important to take time to outline what the students will be learning within the unit as a &lt;em&gt;whole&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/why.png&quot; alt=&quot;Large circle with the word &amp;quot;Why&amp;quot; at the top&quot; title=&quot;Defining the Why&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This guiding focus will bring consistency to your individual lessons and empower you to build more meaningful instruction. By outlining the standards, you’ve built a roadmap to help students to go from Point A to Point B in a meaningful - and much more flexible - manner.&lt;/p&gt;
-
-&lt;p&gt;If the standards are defined, where does flexibility come from? Here’s a chemistry standard I taught in Indiana:&lt;/p&gt;
-
-&lt;blockquote&gt;C.1.5 Describe the characteristics of solids, liquids, and gases and changes in state at the
-macroscopic and microscopic levels.&lt;/blockquote&gt;
-
-&lt;p&gt;From a lesson-centric point of view, I can certainly work with this guidance. Maybe we do a lesson looking at solids, liquids, and gasses in the lab to compare and contrast properties. Then we could look at a &lt;a href=&quot;https://phet.colorado.edu&quot;&gt;PhET simulation&lt;/a&gt; and play with particle diagrams. Students would be introduced to the material and hopefully be able to describe properties on their own.&lt;/p&gt;
-
-&lt;p&gt;The problem is that I’m artificially limiting that exposure. I don’t know what questions students will ask leading up to that particular lesson. I’m also not thinking about bigger connections because the point of the &lt;em&gt;lesson&lt;/em&gt; is to teach the single idea.&lt;/p&gt;
-
-&lt;p&gt;By outlining standards rather than lessons when planning a unit, themes begin to emerge. We can move away from teaching standard C.1.4 before we teach C.1.5. More importantly, it gives students a chance to define their own path in describing a particular piece of content. Having options for interaction rather than prescriptions - all within the scope of the outlined standards - gives students more autonomy and choice, which leads to more engagement.&lt;/p&gt;
-
-&lt;h2 id=&quot;creating-outlines&quot;&gt;Creating Outlines&lt;/h2&gt;
-
-&lt;p&gt;There is no ‘best’ way to outline standards, but I’ve found it helpful to create simple documents for each unit I’m preparing. This focuses my attention and gives me one place to brainstorm ideas. I’m a paper-and-pencil first kind of thinker, so I have physical templates that I’ll scribble on as I work. It may also be helpful to print standards or write them on post it notes so you can quickly rearrange as you think, especially if you’re working with collaborative content teams.&lt;/p&gt;
-
-&lt;p&gt;If you’re teaching a single course, you really only need two boxes at this point: Standards and Themes.&lt;/p&gt;
-
-&lt;p&gt;Single course:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/single.png&quot; alt=&quot;Chart with a space for &amp;quot;standards&amp;quot; and a space for &amp;quot;themes&amp;quot;&quot; title=&quot;Single class planning&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In collaborative planning sessions, look for common threads and throw anything relevant in. This is the brainstorming phase where ideas have equal vitality and worth. You can go back and refine later. Seeing standards on paper will help you set the big idea for the unit, so start at the highest possible level.&lt;/p&gt;
-
-&lt;p&gt;Multiple courses (cross-curriculuar):&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/crosscurricular.png&quot; alt=&quot;Chart with &amp;quot;standards&amp;quot; at the top and different courses listed below to help find alignments&quot; title=&quot;Cross curricular planning template&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can’t begin to design coherent, innovative units unless you know &lt;em&gt;exactly&lt;/em&gt; what you need to teach during that unit.&lt;/p&gt;
-
-&lt;p&gt;I find it’s helpful to verbalize a story. Why is one standard included, but not another? How are they tied together? What significance comes from the addition (or deletion) of one standard over another? If you’re unable to answer these questions or tie together a narrative for the unit, continue to work through standards until you have something you can articulate out loud.&lt;/p&gt;
-
-&lt;h2 id=&quot;looking-for-themes&quot;&gt;Looking for Themes&lt;/h2&gt;
-&lt;p&gt;When your standards are laid out and you can articulate a narrative, it’s easier to see common themes and threads. Try to stay away from restrictive topics like, “the 1920s,” or “cells and organelles” because they frequently limit the scope of thinking about material. What connecting ideas permeate all the standards you want to incorporate into the instruction? Brainstorm ideas. Bounce topics off one another. Keep a journal of interesting ideas to loop into other units or pull back in during a different course or even year.&lt;/p&gt;
-
-&lt;p&gt;Let’s take the chemistry standard again:&lt;/p&gt;
-
-&lt;blockquote&gt;C.1.5 Describe the characteristics of solids, liquids, and gases and changes in state at the
-macroscopic and microscopic levels.&lt;/blockquote&gt;
-
-&lt;p&gt;This used to fall into my “Properties of Matter” unit (real original, I know). Instead of tackling this idea from a narrow materials perspective, it is rolled into a design unit. Why do we use particular materials for different applications? What industries rely on (or manipulate) some of these characteristics?&lt;/p&gt;
-
-&lt;p&gt;By opening up our line of thinking about how to incorporate a standard, our students can now take different paths to showing their understanding through lenses they define. It’s also important to remember that the unit or investigation you design might not fit every student’s interests. Knowing the endgame - seeing the big picture of the &lt;em&gt;Why&lt;/em&gt;, will give you and your students flexibility in exploring different ideas.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-now&quot;&gt;What Now?&lt;/h2&gt;
-&lt;p&gt;The meat of your work is getting standards aligned. Rather than dive into day to day activities (where we’re &lt;em&gt;all&lt;/em&gt; comfortable), map out a sequence of units or even your entire year. If you’re in a district that has a scope and sequence laid out, use that as a starting point.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Standards-alignment helps &lt;em&gt;you&lt;/em&gt; see the big picture&lt;/li&gt;
-  &lt;li&gt;Tell a story with the standards. Think about flow from one idea to another.&lt;/li&gt;
-  &lt;li&gt;Identify potential themes or topics that include - but are not exclusive to - the standards you’ve identified.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Familiarizing yourself with the standards that are taught in each unit will help you open up different avenues for student learning. If you’re struggling to articulate why a particular standard is included, move it! You’re the architect of the course - you have freedom and leeway to design something meaningful for your students&lt;/p&gt;
-
-&lt;p&gt;In the next post, we’ll look at the &lt;em&gt;How&lt;/em&gt; of unit design. How will we assess and evaluate student learning within the context of the &lt;em&gt;Why&lt;/em&gt;?&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;em&gt;Featured image: &lt;a href=&quot;https://flickr.com/photos/librariesrock/36956526540&quot; title=&quot;Where am I?&quot;&gt;Where am I?&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/librariesrock&quot;&gt;Carol (vanhookc)&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/&quot;&gt;Creative Commons (BY-SA) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="planning" /><category term="units" /><category term="lesson" /><category term="design" /><category term="framework" /><summary type="html">The biggest portion of the circle, the Why, defines everything you do in the unit. Before planning a single activity (or lesson), it is important to take time to outline what the students will be learning within the unit as a whole.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c1.staticflickr.com/5/4406/36956526540_0e7ef2b7ba_c.jpg" /></entry></feed>
+&lt;p&gt;&lt;em&gt;Featured image &lt;a href=&quot;https://flickr.com/photos/christianspenceranderson/3339247264&quot; title=&quot;old jumper cables inside an old barn, frisco, texas&quot;&gt;old jumper cables inside an old barn, frisco, texas&lt;/a&gt; flickr photo by &lt;a href=&quot;https://flickr.com/people/christianspenceranderson&quot;&gt;coltera&lt;/a&gt; shared under a &lt;a href=&quot;https://creativecommons.org/licenses/by-nc-sa/2.0/&quot;&gt;Creative Commons (BY-NC-SA) license&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>Brian Bennett</name></author><category term="coaching" /><category term="reflection" /><summary type="html">I planned, and ran, a really unsuccessful series of PD for a group of teachers this year. Unfortunately, I wasn’t wise enough to accept the non-success until we’d reached almost a breaking point in the group.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://c2.staticflickr.com/4/3633/3339247264_e03fa95e7e_b.jpg" /></entry></feed>
