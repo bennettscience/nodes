@@ -7,6 +7,19 @@
 		<atom:link href="rss-feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>A Case for Better Course Design</title>
+				
+				
+					<description>&lt;p&gt;Campus Technology &lt;a href=&quot;https://campustechnology.com/articles/2018/04/19/study-finds-flipped-classroom-model-does-not-improve-grades-in-health-science-course.aspx&quot;&gt;published an article&lt;/a&gt; last week about a biomed course that saw mixed results from flipped instruction. The full article is open access (CC-BY 4.0) and &lt;a href=&quot;https://bmcmededuc.biomedcentral.com/articles/10.1186/s12909-018-1150-1&quot;&gt;available to read&lt;/a&gt;. I’ve read &lt;a href=&quot;https://via.hypothes.is/https://bmcmededuc.biomedcentral.com/articles/10.1186/s12909-018-1150-1&quot;&gt;and annotated&lt;/a&gt; the original article and I’m going to distill a couple of points from bot the published report and the CT article.&lt;/p&gt;
+
+</description>
+				
+				<pubDate>Mon, 23 Apr 2018 09:08:26 -0400</pubDate>
+				<link>/2018/04/a-case-for-better-course-design.html</link>
+				<guid isPermaLink="true">/2018/04/a-case-for-better-course-design.html</guid>
+			</item>
+		
+			<item>
 				<title>Pico: A Tiny Blog</title>
 				
 				
@@ -121,19 +134,6 @@
 				<pubDate>Tue, 23 Jan 2018 08:10:49 -0500</pubDate>
 				<link>/2018/01/planning-a-flipped-unit-part-3.html</link>
 				<guid isPermaLink="true">/2018/01/planning-a-flipped-unit-part-3.html</guid>
-			</item>
-		
-			<item>
-				<title>Rebooting My Coaching</title>
-				
-				
-					<description>&lt;p&gt;I planned, and ran, a really unsuccessful series of PD for a group of teachers this year. Unfortunately, I wasn’t wise enough to accept the non-success until we’d reached almost a breaking point in the group.&lt;/p&gt;
-
-</description>
-				
-				<pubDate>Wed, 17 Jan 2018 14:41:20 -0500</pubDate>
-				<link>/2018/01/rebooting-my-coaching.html</link>
-				<guid isPermaLink="true">/2018/01/rebooting-my-coaching.html</guid>
 			</item>
 		
 	</channel>
